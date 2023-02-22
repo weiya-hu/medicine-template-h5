@@ -28,6 +28,36 @@ export const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: '/hospitalprofile',
+    name: 'HospitalProfile',
+    component: () => import('@/views/infoUrl/hospitalProfile.vue'),
+    meta: { title: '医院简介' },
+  },
+  {
+    path: '/departments',
+    name: 'Departments',
+    component: () => import('@/views/infoUrl/departments.vue'),
+    meta: { title: '科室推荐' },
+  },
+  {
+    path: '/expertteam',
+    name: 'ExpertTeam',
+    component: () => import('@/views/infoUrl/expertTeam.vue'),
+    meta: { title: '专家团队' },
+  },
+  {
+    path: '/medicalguide',
+    name: 'MedicalGuide',
+    component: () => import('@/views/infoUrl/medicalGuide.vue'),
+    meta: { title: '就医指南' },
+  },
+  {
+    path: '/medicaltrends',
+    name: 'MedicalTrends',
+    component: () => import('@/views/infoUrl/medicalTrends.vue'),
+    meta: { title: '医疗动态' },
+  },
+  {
     path: '/:catchAll(.*)',
     name: '404',
     component: () => import('@/views/404.vue'),
