@@ -58,6 +58,12 @@ export const routes: RouteRecordRaw[] = [
     meta: { title: '医疗动态' },
   },
   {
+    path: '/medicaltrendsdetails',
+    name: 'MedicalTrendsDetails',
+    component: () => import('@/views/infoUrl/medicalTrendsDetails.vue'),
+    meta: { title: 'xx医院' },
+  },
+  {
     path: '/:catchAll(.*)',
     name: '404',
     component: () => import('@/views/404.vue'),
