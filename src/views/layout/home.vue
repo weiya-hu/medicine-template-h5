@@ -291,7 +291,7 @@ const infoClick = (data: any) => {
         color: #EDEDED;
 
         .banner-title-p1 {
-          font-size: 16px;
+          font-size: 0.16rem;
           line-height: 0.32rem;
           font-weight: bold;
           font-family: PingFang SC-Bold, PingFang SC;
@@ -299,7 +299,7 @@ const infoClick = (data: any) => {
 
         .banner-title-p2 {
           font-weight: 400;
-          font-size: 13px;
+          font-size: 0.13rem;
           line-height: 0.21rem;
           font-family: PingFang SC-Regular, PingFang SC;
         }
@@ -326,14 +326,14 @@ const infoClick = (data: any) => {
 
         .module1-item-text {
           .module1-item-text-p1 {
-            font-size: 15px;
+            font-size: 0.15rem;
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
             color: #333333;
           }
 
           .module1-item-text-p2 {
-            font-size: 13px;
+            font-size: 0.13rem;
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
             color: #999999;
@@ -356,7 +356,7 @@ const infoClick = (data: any) => {
         .van-swipe__indicator {
           width: 50%;
           height: 0.02rem;
-          border-radius: 193px 193px 193px 193px;
+          border-radius: 1.93rem 1.93rem 1.93rem 1.93rem;
           background: #D4D4D4;
         }
 
@@ -375,7 +375,7 @@ const infoClick = (data: any) => {
         }
 
         p {
-          font-size: 14px;
+          font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #333333;
@@ -398,7 +398,7 @@ const infoClick = (data: any) => {
         }
 
         p {
-          font-size: 14px;
+          font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #333333;
@@ -422,7 +422,7 @@ const infoClick = (data: any) => {
           position: absolute;
           left: 0.10rem;
           top: 0.13rem;
-          font-size: 15px;
+          font-size: 0.15rem;
           font-weight: 400;
         }
 
@@ -430,7 +430,7 @@ const infoClick = (data: any) => {
           position: absolute;
           left: 0.10rem;
           bottom: 0.16rem;
-          font-size: 13px;
+          font-size: 0.13rem;
           font-weight: 400;
         }
 
@@ -454,7 +454,7 @@ const infoClick = (data: any) => {
 
     .module5 {
       .module5-more {
-        font-size: 14px;
+        font-size: 0.14rem;
         font-family: PingFang SC-Regular, PingFang SC;
         font-weight: 400;
         color: #999999;
@@ -464,7 +464,7 @@ const infoClick = (data: any) => {
         padding: 0.17rem 0;
 
         .module5-item-p1 {
-          font-size: 16px;
+          font-size: 0.16rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           margin-bottom: 0.08rem;
@@ -474,7 +474,7 @@ const infoClick = (data: any) => {
         }
 
         .module5-item-p2 {
-          font-size: 14px;
+          font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #666666;

@@ -114,7 +114,7 @@
       }
 
       p {
-        font-size: 14px;
+        font-size: 0.14rem;
         font-family: PingFang SC-Regular, PingFang SC;
         font-weight: 400;
         color: #333333;
@@ -137,7 +137,7 @@
         margin-top: 0.15rem;
         .module3-item-dept-p1 {
           position: relative;
-          font-size: 15px;
+          font-size: 0.15rem;
           font-family: PingFang SC-Bold, PingFang SC;
           font-weight: bold;
           color: #333333;
@@ -154,7 +154,7 @@
           }
         }
         .module3-item-dept-p2 {
-          font-size: 14px;
+          font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #333333;
@@ -174,7 +174,7 @@
 
       p {
         text-align: center;
-        font-size: 14px;
+        font-size: 0.14rem;
         font-family: PingFang SC-Bold, PingFang SC;
         font-weight: bold;
         color: #333333;
@@ -196,22 +196,22 @@
         }
 
         p {
-          font-size: 14px;
+          font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #333333;
-          line-height: 28px;
+          line-height: 0.28rem;
         }
       }
     }
 
     .support {
       text-align: center;
-      font-size: 14px;
+      font-size: 0.14rem;
       font-family: PingFang SC-Regular, PingFang SC;
       font-weight: 400;
       color: #CCCCCC;
-      line-height: 25px;
+      line-height: 0.25rem;
       transform: translateY(-0.25rem);
       padding-bottom: 0.25rem;
     }

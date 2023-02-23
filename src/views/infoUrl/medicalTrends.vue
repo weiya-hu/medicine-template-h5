@@ -94,7 +94,7 @@
       .special-column-item-title {
         margin-top: 0.12rem;
         .special-column-item-p1 {
-          font-size: 15px;
+          font-size: 0.15rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #333333;
@@ -107,7 +107,7 @@
         }
         .special-column-item-p2 {
           text-align: right;
-          font-size: 12px;
+          font-size: 0.12rem;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
           color: #999999;
@@ -117,7 +117,7 @@
     .special-column-item-bot {
       padding: 0.15rem 0;
       .special-column-item-bot-p1 {
-        font-size: 16px;
+        font-size: 0.16rem;
         font-family: PingFang SC-Regular, PingFang SC;
         font-weight: 400;
         margin-bottom: 0.08rem;
@@ -126,7 +126,7 @@
         text-overflow: ellipsis;
       }
       .special-column-item-bot-p2 {
-        font-size: 14px;
+        font-size: 0.14rem;
         font-family: PingFang SC-Regular, PingFang SC;
         font-weight: 400;
         color: #666666;
