@@ -3,32 +3,32 @@
     <div class="container-box">
       <!-- 新冠专栏 -->
       <div class="card special-column" v-for="(item, index) in specialColumnList" :key="index">
-        <div class="module-title">{{item.title}}</div>
+        <div class="module-title">{{ item.title }}</div>
         <div class="special-column-item">
           <div class="special-column-item-top" @click="handleClick">
-            <img :src="item.imageUrl" alt="" />
+            <img :src="item.imageUrl" alt=""/>
             <div class="special-column-item-title">
-              <p class="special-column-item-p1">{{item.specialColumnTitle}}</p>
-              <p class="special-column-item-p2">{{item.specialColumnTime}}</p>
+              <p class="special-column-item-p1">{{ item.specialColumnTitle }}</p>
+              <p class="special-column-item-p2">{{ item.specialColumnTime }}</p>
             </div>
           </div>
           <div class="special-column-item-bot van-row" @click="handleClick">
             <div class="van-col--18">
-              <p class="special-column-item-bot-p1">{{item.specialColumnTitle1}}</p>
-              <p class="special-column-item-bot-p2">{{item.specialColumnText1}}</p>
+              <p class="special-column-item-bot-p1">{{ item.specialColumnTitle1 }}</p>
+              <p class="special-column-item-bot-p2">{{ item.specialColumnText1 }}</p>
             </div>
             <div class="van-col--6 special-column-item-bot-img">
-              <img :src="item.imageUrl1" alt="" />
+              <img :src="item.imageUrl1" alt=""/>
             </div>
           </div>
           <div class="divider"></div>
           <div class="special-column-item-bot van-row" @click="handleClick">
             <div class="van-col--18">
-              <p class="special-column-item-bot-p1">{{item.specialColumnTitle2}}</p>
-              <p class="special-column-item-bot-p2">{{item.specialColumnText3}}</p>
+              <p class="special-column-item-bot-p1">{{ item.specialColumnTitle2 }}</p>
+              <p class="special-column-item-bot-p2">{{ item.specialColumnText3 }}</p>
             </div>
             <div class="van-col--6 special-column-item-bot-img">
-              <img :src="item.imageUrl2" alt="" />
+              <img :src="item.imageUrl2" alt=""/>
             </div>
           </div>
         </div>
@@ -77,16 +77,20 @@ const handleClick = () => {
 <style lang="scss" scoped>
 .container-box {
   padding: 0.15rem !important;
+
   .special-column .special-column-item {
     margin-top: 0.15rem;
+
     .special-column-item-top {
       img {
         width: 100%;
         height: 1.33rem;
         border-radius: 0.12rem;
       }
+
       .special-column-item-title {
         margin-top: 0.12rem;
+
         .special-column-item-p1 {
           font-size: 0.15rem;
           font-family: PingFang SC-Regular, PingFang SC;
@@ -99,6 +103,7 @@ const handleClick = () => {
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
         }
+
         .special-column-item-p2 {
           text-align: right;
           font-size: 0.12rem;
@@ -108,8 +113,10 @@ const handleClick = () => {
         }
       }
     }
+
     .special-column-item-bot {
       padding: 0.15rem 0;
+
       .special-column-item-bot-p1 {
         font-size: 0.16rem;
         font-family: PingFang SC-Regular, PingFang SC;
@@ -119,6 +126,7 @@ const handleClick = () => {
         overflow: hidden;
         text-overflow: ellipsis;
       }
+
       .special-column-item-bot-p2 {
         font-size: 0.14rem;
         font-family: PingFang SC-Regular, PingFang SC;
@@ -131,17 +139,20 @@ const handleClick = () => {
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
+
       .special-column-item-bot-img {
         width: 0.76rem;
         height: 0.76rem;
         border-radius: 0.08rem;
         overflow: hidden;
+
         img {
           width: 100%;
           height: 100%;
         }
       }
     }
+
     .divider {
       width: 100%;
       height: 0.005rem;

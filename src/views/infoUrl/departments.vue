@@ -65,6 +65,7 @@ const getShow = () => {
       font-weight: 800;
       color: #333333;
     }
+
     &:before {
       background: 0;
     }

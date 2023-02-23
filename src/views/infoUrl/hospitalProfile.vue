@@ -132,9 +132,10 @@
       //}
     }
 
-    .module3 .module3-item{
+    .module3 .module3-item {
       .module3-item-dept {
         margin-top: 0.15rem;
+
         .module3-item-dept-p1 {
           position: relative;
           font-size: 0.15rem;
@@ -142,6 +143,7 @@
           font-weight: bold;
           color: #333333;
           line-height: 0.26rem;
+
           &:after {
             content: '';
             display: block;
@@ -153,6 +155,7 @@
             top: 0.04rem;
           }
         }
+
         .module3-item-dept-p2 {
           font-size: 0.14rem;
           font-family: PingFang SC-Regular, PingFang SC;
@@ -162,6 +165,7 @@
         }
       }
     }
+
     .module4 .module4-item {
       margin-top: 0.15rem;
       width: 100%;

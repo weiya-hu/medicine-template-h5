@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <p>标题标题标题标题标题标题标题标题标题</p>
-    <img src="../../assets/images/home_banner.png" />
+    <img src="../../assets/images/home_banner.png" alt="" />
     <span>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
   </div>
 </template>

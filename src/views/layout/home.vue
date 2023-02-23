@@ -330,6 +330,7 @@ const infoClick = (data: any) => {
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
             color: #333333;
+            line-height: 0.21rem;
           }
 
           .module1-item-text-p2 {
@@ -337,6 +338,7 @@ const infoClick = (data: any) => {
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
             color: #999999;
+            line-height: 0.24rem;
           }
         }
 
