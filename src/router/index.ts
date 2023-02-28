@@ -21,48 +21,61 @@ export const routes: RouteRecordRaw[] = [
       //首页
       {
         path: '/home',
-        name: 'home',
+        name: 'Home',
         component: () => import('@/views/layout/home.vue'),
         meta: { title: '首页' },
       },
+      // {
+      //   path: '/medicineGuide',
+      //   name: 'MedicineGuide',
+      //   component: () => import('@/views/layout/medicineGuide.vue'),
+      //   meta: { title: '就医指南' },
+      // },
+      {
+        path: '/tohospital',
+        name: 'ToHospital',
+        component: () => import('@/views/layout/toHospital.vue'),
+        meta: { title: '到院导航' },
+      },
+      {
+        path: '/hospitalprofile',
+        name: 'HospitalProfile',
+        component: () => import('@/views/infoUrl/hospitalProfile.vue'),
+        meta: { title: '医院简介' },
+      },
+      {
+        path: '/departments',
+        name: 'Departments',
+        component: () => import('@/views/infoUrl/departments.vue'),
+        meta: { title: '科室推荐' },
+      },
+      {
+        path: '/expertteam',
+        name: 'ExpertTeam',
+        component: () => import('@/views/infoUrl/expertTeam.vue'),
+        meta: { title: '专家团队' },
+      },
+      {
+        path: '/medicalguide',
+        name: 'MedicalGuide',
+        component: () => import('@/views/infoUrl/medicalGuide.vue'),
+        meta: { title: '就医指南' },
+      },
+      {
+        path: '/medicaltrends',
+        name: 'MedicalTrends',
+        component: () => import('@/views/infoUrl/medicalTrends.vue'),
+        meta: { title: '医疗动态' },
+      },
+      {
+        path: '/medicaltrendsdetails',
+        name: 'MedicalTrendsDetails',
+        component: () => import('@/views/infoUrl/medicalTrendsDetails.vue'),
+        meta: { title: 'xx医院' },
+      },
     ],
   },
-  {
-    path: '/hospitalprofile',
-    name: 'HospitalProfile',
-    component: () => import('@/views/infoUrl/hospitalProfile.vue'),
-    meta: { title: '医院简介' },
-  },
-  {
-    path: '/departments',
-    name: 'Departments',
-    component: () => import('@/views/infoUrl/departments.vue'),
-    meta: { title: '科室推荐' },
-  },
-  {
-    path: '/expertteam',
-    name: 'ExpertTeam',
-    component: () => import('@/views/infoUrl/expertTeam.vue'),
-    meta: { title: '专家团队' },
-  },
-  {
-    path: '/medicalguide',
-    name: 'MedicalGuide',
-    component: () => import('@/views/infoUrl/medicalGuide.vue'),
-    meta: { title: '就医指南' },
-  },
-  {
-    path: '/medicaltrends',
-    name: 'MedicalTrends',
-    component: () => import('@/views/infoUrl/medicalTrends.vue'),
-    meta: { title: '医疗动态' },
-  },
-  {
-    path: '/medicaltrendsdetails',
-    name: 'MedicalTrendsDetails',
-    component: () => import('@/views/infoUrl/medicalTrendsDetails.vue'),
-    meta: { title: 'xx医院' },
-  },
+
   {
     path: '/:catchAll(.*)',
     name: '404',

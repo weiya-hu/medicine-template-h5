@@ -10,6 +10,7 @@ body {
 .flexw {
   flex-wrap: wrap;
 }
+
 .flexl {
   display: flex;
   justify-content: flex-start;
@@ -37,6 +38,15 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+.flexc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.flext{
+  align-items: flex-start;
 }
 .pointer{
   cursor: pointer;
