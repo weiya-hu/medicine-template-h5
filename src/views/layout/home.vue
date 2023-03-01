@@ -267,8 +267,9 @@ const infoUrlList = ref([
 
 // 就诊服务
 const visitClick = (data: any) => {
-  console.log(data)
-  router.push(data)
+  if (data === 'tohospital') {
+    router.push(data)
+  }
 }
 // 信息服务
 const infoClick = (url: any, code: any) => {
