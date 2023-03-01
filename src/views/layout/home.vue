@@ -15,28 +15,28 @@
     <div class="container-box">
       <!-- 功能模块 -->
       <div class="card module1 van-row">
-        <div class="van-col--12 module1-item">
+        <div class="van-col--12 module1-item" @click="featuredClick">
           <img src="../../assets/images/home_module1_item1.png" alt=""/>
           <div class="module1-item-text">
             <p class="module1-item-text-p1">预约挂号</p>
             <p class="module1-item-text-p2">查询医保记录</p>
           </div>
         </div>
-        <div class="van-col--12 module1-item">
+        <div class="van-col--12 module1-item" @click="featuredClick">
           <img src="../../assets/images/home_module1_item2.png" alt=""/>
           <div class="module1-item-text">
             <p class="module1-item-text-p1">门诊缴费</p>
             <p class="module1-item-text-p2">手机在线缴费</p>
           </div>
         </div>
-        <div class="van-col--12 module1-item">
+        <div class="van-col--12 module1-item" @click="featuredClick">
           <img src="../../assets/images/home_module1_item3.png" alt=""/>
           <div class="module1-item-text">
             <p class="module1-item-text-p1">医保查询</p>
             <p class="module1-item-text-p2">查询医保记录</p>
           </div>
         </div>
-        <div class="van-col--12 module1-item">
+        <div class="van-col--12 module1-item" @click="featuredClick">
           <img src="../../assets/images/home_module1_item4.png" alt=""/>
           <div class="module1-item-text">
             <p class="module1-item-text-p1">医保电子凭证</p>
@@ -72,22 +72,22 @@
       <div class="card module4">
         <div class="module-title">特色服务</div>
         <van-row gutter="10">
-          <van-col span="12" class="module4-item">
+          <van-col span="12" class="module4-item" @click="featuredClick">
             <img src="../../assets/images/home_module4_item1.png" alt=""/>
             <p class="module4-item-p1 color1">住院病案复印邮寄</p>
             <p class="module4-item-p2 color3">住院病案线上申请</p>
           </van-col>
-          <van-col span="12" class="module4-item">
+          <van-col span="12" class="module4-item" @click="featuredClick">
             <img src="../../assets/images/home_module4_item2.png" alt=""/>
             <p class="module4-item-p1 color2">住院病案复印邮寄</p>
             <p class="module4-item-p2 color4">住院病案线上申请</p>
           </van-col>
-          <van-col span="12" class="module4-item">
+          <van-col span="12" class="module4-item" @click="featuredClick">
             <img src="../../assets/images/home_module4_item2.png" alt=""/>
             <p class="module4-item-p1 color2">住院病案复印邮寄</p>
             <p class="module4-item-p2 color4">住院病案线上申请</p>
           </van-col>
-          <van-col span="12" class="module4-item">
+          <van-col span="12" class="module4-item" @click="featuredClick">
             <img src="../../assets/images/home_module4_item1.png" alt=""/>
             <p class="module4-item-p1 color1">住院病案复印邮寄</p>
             <p class="module4-item-p2 color3">住院病案线上申请</p>
@@ -98,9 +98,9 @@
       <div class="card module5">
         <div class="van-row van-row--justify-space-between">
           <div class="module-title">健康宣教</div>
-          <div class="module5-more">更多 ></div>
+          <div class="module5-more" @click="featuredClick">更多 ></div>
         </div>
-        <div class="module5-item van-row">
+        <div class="module5-item van-row" @click="featuredClick">
           <div class="van-col--18">
             <p class="module5-item-p1">【健康科普】新冠转阴后如何护理？</p>
             <p class="module5-item-p2">公司与华为长期深度跨界合作关系及合作模式均没有发生变化</p>
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="divider"></div>
-        <div class="module5-item van-row">
+        <div class="module5-item van-row" @click="featuredClick">
           <div class="van-col--18">
             <p class="module5-item-p1">新冠转阴后如何护护理？</p>
             <p class="module5-item-p2">公司与华为长期深度跨界合作关系及合作模式均没有发生变化</p>
@@ -128,6 +128,7 @@
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
 import {categoryTree_api} from "@/api/infoUrl";
+import {showToast} from "vant";
 
 const router = useRouter()
 // 背景
@@ -269,6 +270,8 @@ const infoUrlList = ref([
 const visitClick = (data: any) => {
   if (data === 'tohospital') {
     router.push(data)
+  } else {
+    showToast('暂未开放')
   }
 }
 // 信息服务
@@ -277,6 +280,10 @@ const infoClick = (url: any, code: any) => {
     path: url,
     query: {code: code}
   })
+}
+// 特色服务
+const featuredClick = () => {
+  showToast('暂未开放')
 }
 </script>
 
