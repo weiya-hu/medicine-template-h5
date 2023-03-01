@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="banner">
-      <!--      <img src="../../assets/images/home_banner.png" alt="" />-->
+      <img src="../../assets/images/home_banner.png" alt=""/>
     </div>
     <div class="container-box">
-      <!-- 功能模块 -->
+      <!-- 导航栏 -->
       <div class="card module1 van-row">
         <div class="van-col--6 module1-item">
           <img src="../../assets/images/hospitalProfile-module1-item1.png" alt=""/>
@@ -24,36 +24,42 @@
         </div>
       </div>
       <!-- 医疗机构许可证书 -->
+<!--      <div class="card module2">-->
+<!--        <div class="module-title">医疗机构许可证书</div>-->
+<!--        <div class="module2-item">-->
+<!--          <img src="../../assets/images/home_banner.png" alt=""/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; 互联网诊疗服务范围（科目/病种） &ndash;&gt;-->
+<!--      <div class="card module3">-->
+<!--        <div class="module-title">互联网诊疗服务范围（科目/病种）</div>-->
+<!--        <div class="module3-item">-->
+<!--          <div class="module3-item-dept">-->
+<!--            <p class="module3-item-dept-p1">内科</p>-->
+<!--            <p class="module3-item-dept-p2">心血管内科专业</p>-->
+<!--          </div>-->
+<!--          <div class="module3-item-dept">-->
+<!--            <p class="module3-item-dept-p1">儿童保健科</p>-->
+<!--            <p class="module3-item-dept-p2">儿童生长发育专业、儿童营养专业、儿童心理卫生专业、儿童五官保健专业、儿童康复专业</p>-->
+<!--          </div>-->
+<!--          <div class="module3-item-dept">-->
+<!--            <p class="module3-item-dept-p1">医学影像科</p>-->
+<!--            <p class="module3-item-dept-p2">儿童生长发育专业、儿童营养专业、儿童心理卫生专业、儿童五官保健专业、儿童康复专业</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; 荣誉奖项 &ndash;&gt;-->
+<!--      <div class="card module4">-->
+<!--        <div class="module-title">荣誉奖项</div>-->
+<!--        <div class="module4-item">-->
+<!--          <img src="../../assets/images/home_banner.png" alt=""/>-->
+<!--          <p>2022年全国十佳机构</p>-->
+<!--        </div>-->
+<!--      </div>-->
       <div class="card module2">
-        <div class="module-title">医疗机构许可证书</div>
+        <div class="module-title">{{state.title}}</div>
         <div class="module2-item">
-          <!--          <img src="../../assets/images/home_banner.png" alt="" />-->
-        </div>
-      </div>
-      <!-- 互联网诊疗服务范围（科目/病种） -->
-      <div class="card module3">
-        <div class="module-title">互联网诊疗服务范围（科目/病种）</div>
-        <div class="module3-item">
-          <div class="module3-item-dept">
-            <p class="module3-item-dept-p1">内科</p>
-            <p class="module3-item-dept-p2">心血管内科专业</p>
-          </div>
-          <div class="module3-item-dept">
-            <p class="module3-item-dept-p1">儿童保健科</p>
-            <p class="module3-item-dept-p2">儿童生长发育专业、儿童营养专业、儿童心理卫生专业、儿童五官保健专业、儿童康复专业</p>
-          </div>
-          <div class="module3-item-dept">
-            <p class="module3-item-dept-p1">医学影像科</p>
-            <p class="module3-item-dept-p2">儿童生长发育专业、儿童营养专业、儿童心理卫生专业、儿童五官保健专业、儿童康复专业</p>
-          </div>
-        </div>
-      </div>
-      <!-- 荣誉奖项 -->
-      <div class="card module4">
-        <div class="module-title">荣誉奖项</div>
-        <div class="module4-item">
-          <div></div>
-          <p>2022年全国十佳机构</p>
+          <div v-html="state.post"></div>
         </div>
       </div>
       <!-- 联系我们 -->
@@ -88,18 +94,37 @@
 </template>
 
 <script lang="ts" setup>
+import {onMounted, ref} from "vue";
+import {categoryTree_api, editList_api} from "@/api/infoUrl";
+import {useRoute} from "vue-router";
+import { _ } from 'lodash';
 
+const route = useRoute();
+const state = ref({
+  post: ''
+})
+const getData = () => {
+  categoryTree_api({code: route.query.code, allChild: true}).then(res => {
+    if (res.code === 200) {
+      editList_api({categoryId: res.data[0].childs[0].categoryId, status: 1}).then(res => {
+        if (res.code === 200) {
+          state.value.post = _.unescape(res.data.list[0].post)
+        }
+      })
+    }
+  })
+}
+onMounted(() => {
+  getData()
+})
 </script>
 
 <style lang="scss" scoped>
 .container {
-  .banner {
-    background: linear-gradient(225deg, #0079DE 0%, #0077DB 25%, #1DA7EF 100%);
+  .banner img {
+    width: 100%;
   }
 
-  //.banner img{
-  //  width: 100%;
-  //}
   .container-box {
     .card {
       transform: translateY(-0.20rem);
@@ -125,11 +150,15 @@
     .module2 .module2-item {
       margin-top: 0.15rem;
       width: 100%;
-      height: 1.80rem;
-      background: #C3CFE6;
-      //img {
-      //  width: 100%;
-      //}
+      //height: 1.80rem;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      p {
+        margin-top: 0.15rem;
+      }
     }
 
     .module3 .module3-item {
@@ -170,7 +199,7 @@
       margin-top: 0.15rem;
       width: 100%;
 
-      div {
+      img {
         width: 100%;
         height: 1.80rem;
         background: #C3CFE6;

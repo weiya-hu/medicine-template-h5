@@ -3,7 +3,8 @@ const TokenKey = 'access_token'
 const PlatId = 'platformProductId'
 
 export function getToken() {
-  return Cookies.get(TokenKey)
+  // return Cookies.get(TokenKey)
+  return 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTg0ODU5NDY1NDgyMDIyOTEyLCJ1c2VyX2tleSI6ImNhMmJhZWE2MDVkNzQ5MmVhYjdlYzViODhkNTYwMTk1IiwidXNlcm5hbWUiOiLosK3njonnkLQifQ.bjX6VoExGy17__VqZYalSbMDBl3cWRZ5YY5MEHtVjtP81dkk20A-4CysXy8acTCsLARFYixO7vATfwjOHehPtw'
 }
 
 export function setToken(token: string) {

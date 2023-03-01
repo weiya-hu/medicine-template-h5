@@ -62,7 +62,7 @@
         <div class="module-title">信息服务</div>
         <div class="van-row">
           <div class="van-col--6 module3-item" v-for="(item, index) in infoUrlList" :key="index"
-               @click="infoClick(item.navUrl)">
+               @click="infoClick(item.navUrl, item.code)">
             <img :src="item.imageUrl" alt=""/>
             <p>{{ item.text }}</p>
           </div>
@@ -125,8 +125,9 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import {categoryTree_api} from "@/api/infoUrl";
 
 const router = useRouter()
 // 背景
@@ -217,7 +218,7 @@ const visitUrlList = ref([
         text: '餐饮服务'
       },
       {
-        navUrl: 'hospitalNavigation',
+        navUrl: 'tohospital',
         imageUrl: new URL('../../assets/images/home_module2_item13.png', import.meta.url).href,
         text: '到院导航'
       },
@@ -234,38 +235,47 @@ const visitUrlList = ref([
 const infoUrlList = ref([
   {
     navUrl: 'hospitalProfile',
+    code: 'HOSPITAL_PROFILE',
     imageUrl: new URL('../../assets/images/home_module3_item1.png', import.meta.url).href,
     text: '医院简介'
   },
   {
     navUrl: 'departments',
+    code: 'DEPARTMENT_MANAGEMENT',
     imageUrl: new URL('../../assets/images/home_module3_item2.png', import.meta.url).href,
     text: '科室推荐'
   },
   {
     navUrl: 'expertTeam',
+    code: 'PHYSICIAN_MANAGEMENT',
     imageUrl: new URL('../../assets/images/home_module3_item3.png', import.meta.url).href,
     text: '专家团队'
   },
   {
-    navUrl: 'medicalGuide',
+    navUrl: 'medicalguide',
+    code: 'MEDICAL_GUIDE',
     imageUrl: new URL('../../assets/images/home_module3_item4.png', import.meta.url).href,
     text: '就医指南'
   },
   {
     navUrl: 'medicalTrends',
+    code: 'MEDICAL_TRENDS',
     imageUrl: new URL('../../assets/images/home_module3_item5.png', import.meta.url).href,
     text: '医疗动态'
   },
 ])
 
 // 就诊服务
-const visitClick = (data: String) => {
+const visitClick = (data: any) => {
   console.log(data)
+  router.push(data)
 }
 // 信息服务
-const infoClick = (data: any) => {
-  router.push(data)
+const infoClick = (url: any, code: any) => {
+  router.push({
+    path: url,
+    query: {code: code}
+  })
 }
 </script>
 

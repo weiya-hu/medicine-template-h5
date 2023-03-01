@@ -25,12 +25,6 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/layout/home.vue'),
         meta: { title: '首页' },
       },
-      // {
-      //   path: '/medicineGuide',
-      //   name: 'MedicineGuide',
-      //   component: () => import('@/views/layout/medicineGuide.vue'),
-      //   meta: { title: '就医指南' },
-      // },
       {
         path: '/tohospital',
         name: 'ToHospital',
@@ -58,7 +52,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: '/medicalguide',
         name: 'MedicalGuide',
-        component: () => import('@/views/infoUrl/medicalGuide.vue'),
+        component: () => import('@/views/infoUrl/medicineGuide.vue'),
         meta: { title: '就医指南' },
       },
       {

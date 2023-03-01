@@ -1,34 +1,27 @@
 <template>
   <div class="container">
     <div class="container-box">
-      <!-- 新冠专栏 -->
       <div class="card special-column" v-for="(item, index) in specialColumnList" :key="index">
-        <div class="module-title">{{ item.title }}</div>
+        <div class="module-title">{{ item.name }}</div>
         <div class="special-column-item">
-          <div class="special-column-item-top" @click="handleClick">
-            <img :src="item.imageUrl" alt=""/>
-            <div class="special-column-item-title">
-              <p class="special-column-item-p1">{{ item.specialColumnTitle }}</p>
-              <p class="special-column-item-p2">{{ item.specialColumnTime }}</p>
+          <div class="special-column-item-top" v-for="(v,i) in essayList[index]" :key="i" @click="handleClick(v.postId)">
+            <div v-if="i == 0">
+              <img :src="v.thumbnail" alt=""/>
+              <div class="special-column-item-title">
+                <p class="special-column-item-p1">{{ v.title }}</p>
+                <p class="special-column-item-p2">{{ v.publishTime }}</p>
+              </div>
             </div>
-          </div>
-          <div class="special-column-item-bot van-row" @click="handleClick">
-            <div class="van-col--18">
-              <p class="special-column-item-bot-p1">{{ item.specialColumnTitle1 }}</p>
-              <p class="special-column-item-bot-p2">{{ item.specialColumnText1 }}</p>
-            </div>
-            <div class="van-col--6 special-column-item-bot-img">
-              <img :src="item.imageUrl1" alt=""/>
-            </div>
-          </div>
-          <div class="divider"></div>
-          <div class="special-column-item-bot van-row" @click="handleClick">
-            <div class="van-col--18">
-              <p class="special-column-item-bot-p1">{{ item.specialColumnTitle2 }}</p>
-              <p class="special-column-item-bot-p2">{{ item.specialColumnText3 }}</p>
-            </div>
-            <div class="van-col--6 special-column-item-bot-img">
-              <img :src="item.imageUrl2" alt=""/>
+            <div v-if="i !== 0">
+              <div class="special-column-item-bot van-row">
+                <div class="van-col--18">
+                  <p class="special-column-item-bot-p1">{{ v.title }}</p>
+                  <p class="special-column-item-bot-p2">{{ v.desc }}</p>
+                </div>
+                <div class="van-col--6 special-column-item-bot-img">
+                  <img :src="v.thumbnail" alt=""/>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -38,40 +31,40 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
-import {useRouter} from "vue-router";
+import {onMounted, ref} from "vue";
+import {useRoute, useRouter} from "vue-router";
+import {categoryTree_api, editList_api} from "@/api/infoUrl";
 
-const router = useRouter()
-const specialColumnList = ref([
-  {
-    title: '新冠专栏',
-    imageUrl: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-    specialColumnTitle: '【突破】我院王xx教授带领团队攻克题，预计在下个月进行试药',
-    specialColumnTime: '呼吸科·18小时前',
-    specialColumnTitle1: '【健康科普】新冠转阴后如何护理？',
-    specialColumnText1: '公司与华为长期深度跨界合作关系及合作模式均没有发生变化',
-    imageUrl1: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-    specialColumnTitle2: '【健康科普】新冠转阴后如何护理？',
-    specialColumnText3: '公司与华为长期深度跨界合作关系及合作模式均没有发生变化',
-    imageUrl2: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-  },
-  {
-    title: '急诊专栏',
-    imageUrl: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-    specialColumnTitle: '【突破】我院王xx教授带领团队攻克题，预计在下个月进行试药',
-    specialColumnTime: '呼吸科·18小时前',
-    specialColumnTitle1: '【健康科普】新冠转阴后如何护理？',
-    specialColumnText1: '公司与华为长期深度跨界合作关系及合作模式均没有发生变化',
-    imageUrl1: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-    specialColumnTitle2: '【健康科普】新冠转阴后如何护理？',
-    specialColumnText3: '公司与华为长期深度跨界合作关系及合作模式均没有发生变化',
-    imageUrl2: new URL('../../assets/images/home_banner.png', import.meta.url).href,
-  }
-])
+const router = useRouter(), route = useRoute()
+const specialColumnList = ref([])
+const essayList = ref([])
 
-const handleClick = () => {
-  router.push('medicaltrendsdetails')
+const handleClick = (data: any) => {
+  router.push({
+    path: 'medicaltrendsdetails',
+    query: {postId: data}
+  })
 }
+const index = ref(0)
+const getListData = () => {
+  categoryTree_api({code: route.query.code, allChild: true}).then(res => {
+    if (res.code === 200) {
+      specialColumnList.value = res.data[0].childs
+      res.data[0].childs.forEach((item: any) => {
+        editList_api({categoryId: item.categoryId, status: 1}).then(res => {
+          if (res.code === 200) {
+            res.data.list.length = 3
+            essayList.value.push(res.data.list)
+          }
+        })
+      })
+    }
+  })
+}
+
+onMounted(() => {
+  getListData()
+})
 </script>
 
 <style lang="scss" scoped>
