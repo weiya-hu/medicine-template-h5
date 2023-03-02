@@ -58,9 +58,10 @@
 <!--      </div>-->
       <div class="card module2">
         <div class="module-title">{{state.title}}</div>
-        <div class="module2-item">
+        <div class="module2-item" v-if="listData.length !== 0">
           <div v-html="state.post"></div>
         </div>
+        <van-empty v-else description="暂无数据" />
       </div>
       <!-- 联系我们 -->
       <div class="card module5">
@@ -103,11 +104,14 @@ const route = useRoute();
 const state = ref({
   post: ''
 })
+const listData = ref([])
+
 const getData = () => {
   categoryTree_api({code: route.query.code, allChild: true}).then(res => {
     if (res.code === 200) {
       editList_api({categoryId: res.data[0].childs[0].categoryId, status: 2}).then(res => {
         if (res.code === 200) {
+          listData.value = res.data.list
           state.value.post = _.unescape(res.data.list[0].post)
         }
       })

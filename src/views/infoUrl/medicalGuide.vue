@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <van-cell-group inset>
+    <van-cell-group inset v-if="guideList.length !== 0">
       <van-field v-model="search" @click-right-icon="onChange">
         <template #right-icon>
           <img src="../../assets/images/search.png"/>
@@ -13,6 +13,7 @@
         </template>
       </van-cell>
     </van-cell-group>
+    <van-empty v-else description="暂无数据" />
     <van-popup
         v-model:show="showGuide"
         round
@@ -20,9 +21,10 @@
         position="bottom"
         :style="{ height: '82%' }"
     >
-      <div class="should-know">
+      <div class="should-know" v-if="listData.length !== 0">
         <div v-html="state.post"></div>
       </div>
+      <van-empty v-else description="暂无数据" />
     </van-popup>
   </div>
 </template>
@@ -40,6 +42,7 @@ const guideList = ref([])
 const state = ref({
   post: ''
 })
+const listData = ref([])
 
 const onChange = () => {
   getListData()
@@ -47,8 +50,9 @@ const onChange = () => {
 
 const onClick = (data: any) => {
   showGuide.value = true
-  editList_api({categoryId: data, status: 2}).then(res => {
+  editList_api({categoryId: data, status: 1}).then(res => {
     state.value.post = _.unescape(res.data.list[0].post)
+    listData.value = res.data.list
   })
 }
 const getListData = () => {
