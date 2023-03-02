@@ -7,6 +7,7 @@ import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import cache, { getToken, removeToken } from '@/utils/cache'
 import { tansParams } from '@/utils/tool'
 import errorCode from '@/utils/errorCode'
+import { showToast } from 'vant'
 
 //引入ui框架的弹窗组件
 // import { ElMessage, ElMessageBox, ElNotification } from 'element-plus'
@@ -97,7 +98,7 @@ axios.interceptors.response.use(
 
     if (code === 401 || code === 403) {
       removeToken()
-      router.replace('/login')
+      // router.replace('/empower')
       // if (code === 403) {
       // if (!isRelogin.show) {
       //   isRelogin.show = true
@@ -117,17 +118,20 @@ axios.interceptors.response.use(
       // ElNotification.error({
       //   title: msg,
       // })
+      showToast(msg)
       return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
     } else if (code === 400 && msg === '未取到登录信息') {
       removeToken()
       location.href = '/'
     } else if (code === 500) {
+      showToast(msg)
       // ElMessage({
       //   message: msg,
       //   type: 'error',
       // })
       return Promise.reject(new Error(msg))
     } else if (code === 999) {
+      showToast(msg)
       //维护状态，跳转无权限页面
       // ElMessage({
       //   message: msg,
@@ -135,6 +139,7 @@ axios.interceptors.response.use(
       // })
       location.href = '/noaccess'
     } else if (code !== 200) {
+      showToast(msg)
       // ElNotification.error({
       //   title: msg,
       // })
@@ -154,6 +159,7 @@ axios.interceptors.response.use(
     } else if (message.includes('Request failed with status code')) {
       message = '系统接口' + message.substring(message.length - 3) + '异常'
     }
+    showToast(message)
     // ElMessage({
     //   message: message,
     //   type: 'error',

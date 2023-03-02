@@ -18,6 +18,13 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/layout.vue'),
     redirect: '/home',
     children: [
+      //授权页面
+      {
+        path: '/empower',
+        name: 'Empower',
+        component: () => import('@/views/layout/empower.vue'),
+        meta: { title: '授权登录' },
+      },
       //首页
       {
         path: '/home',

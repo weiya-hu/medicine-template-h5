@@ -1,7 +1,7 @@
 <template>
   <router-view v-slot="{ Component }">
     <transition name="fade">
-      <keep-alive :include="['MyOrder', 'OrderIndex']">
+      <keep-alive>
         <component :is="Component" />
       </keep-alive>
     </transition>
