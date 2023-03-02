@@ -4,7 +4,7 @@
       <div class="card special-column" v-for="(item, index) in specialColumnList" :key="index">
         <div class="module-title">{{ item.name }}</div>
         <div class="special-column-item">
-          <div class="special-column-item-top" v-for="(v,i) in essayList[index]" :key="i" @click="handleClick(v.postId)">
+          <div class="special-column-item-top" v-for="(v, i) in essayList[index]" :key="i" @click="handleClick(v.postId)">
             <div v-if="i == 0">
               <img :src="v.thumbnail" alt=""/>
               <div class="special-column-item-title">
@@ -53,7 +53,7 @@ const getListData = () => {
       res.data[0].childs.forEach((item: any) => {
         editList_api({categoryId: item.categoryId, status: 1}).then(res => {
           if (res.code === 200) {
-            res.data.list.length = 3
+            if (res.data.list.length > 3) res.data.list.length = 3
             essayList.value.push(res.data.list)
           }
         })

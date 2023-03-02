@@ -4,7 +4,7 @@ const PlatId = 'platformProductId'
 
 export function getToken() {
   // return Cookies.get(TokenKey)
-  return 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTg0ODU5NDY1NDgyMDIyOTEyLCJ1c2VyX2tleSI6ImNhMmJhZWE2MDVkNzQ5MmVhYjdlYzViODhkNTYwMTk1IiwidXNlcm5hbWUiOiLosK3njonnkLQifQ.bjX6VoExGy17__VqZYalSbMDBl3cWRZ5YY5MEHtVjtP81dkk20A-4CysXy8acTCsLARFYixO7vATfwjOHehPtw'
+  return 'eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoxNTg0ODU5NDY1NDgyMDIyOTEyLCJ1c2VyX2tleSI6ImQ0MmVlNmMxYTg5NjRhNmZhOGJmYmM4MmUyMDUzZmRkIiwidXNlcm5hbWUiOiLosK3njonnkLQifQ.54WYP7Ak1OQRMgjxHurz7kHjMCBibTOXh_eyRgFpRhZpnxFJWQUBPB5hyWUgFia07v_Ks06H0AO5awtOcCYxJw'
 }
 
 export function setToken(token: string) {
