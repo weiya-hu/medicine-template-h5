@@ -16,7 +16,7 @@ export const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Index',
     component: () => import('@/views/layout.vue'),
-    redirect: '/home',
+    redirect: '/empower',
     children: [
       //授权页面
       {
