@@ -44,7 +44,7 @@ const onChange = () => {
 }
 // 右侧内容
 const getListDataRig = () => {
-  editList_api({categoryId: categoryId.value, status: 1}).then(res => {
+  editList_api({categoryId: categoryId.value, status: 2}).then(res => {
     if (res.code === 200) {
       dataLength.value = res.data.list
       state.value = res.data.list[0]

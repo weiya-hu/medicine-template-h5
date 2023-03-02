@@ -43,7 +43,7 @@ const onChange = () => {
   getListDataRig()
 }
 const getListDataRig = () => {
-  editList_api({categoryId: categoryId.value, status: 1}).then(res => {
+  editList_api({categoryId: categoryId.value, status: 2}).then(res => {
     if (res.code === 200) {
       dataLength.value = res.data.list
       state.title = res.data.list[0].title

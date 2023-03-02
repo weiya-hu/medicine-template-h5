@@ -106,7 +106,7 @@ const state = ref({
 const getData = () => {
   categoryTree_api({code: route.query.code, allChild: true}).then(res => {
     if (res.code === 200) {
-      editList_api({categoryId: res.data[0].childs[0].categoryId, status: 1}).then(res => {
+      editList_api({categoryId: res.data[0].childs[0].categoryId, status: 2}).then(res => {
         if (res.code === 200) {
           state.value.post = _.unescape(res.data.list[0].post)
         }

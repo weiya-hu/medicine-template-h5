@@ -56,6 +56,12 @@ export const routes: RouteRecordRaw[] = [
         meta: { title: '就医指南' },
       },
       {
+        path: '/medicalGuide',
+        name: 'MedicalGuide',
+        component: () => import('@/views/infoUrl/medicalGuide.vue'),
+        meta: { title: '就医指南' },
+      },
+      {
         path: '/medicaltrends',
         name: 'MedicalTrends',
         component: () => import('@/views/infoUrl/medicalTrends.vue'),

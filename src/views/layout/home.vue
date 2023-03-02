@@ -253,7 +253,7 @@ const infoUrlList = ref([
     text: '专家团队'
   },
   {
-    navUrl: 'medicalguide',
+    navUrl: 'medicalGuide',
     code: 'MEDICAL_GUIDE',
     imageUrl: new URL('../../assets/images/home_module3_item4.png', import.meta.url).href,
     text: '就医指南'

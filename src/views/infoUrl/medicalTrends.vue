@@ -1,25 +1,27 @@
 <template>
   <div class="container">
-    <div class="container-box">
-      <div class="card special-column" v-for="(item, index) in specialColumnList" :key="index">
-        <div class="module-title">{{ item.name }}</div>
-        <div class="special-column-item">
-          <div class="special-column-item-top" v-for="(v, i) in essayList[index]" :key="i" @click="handleClick(v.postId)">
-            <div v-if="i == 0">
-              <img :src="v.thumbnail" alt=""/>
-              <div class="special-column-item-title">
-                <p class="special-column-item-p1">{{ v.title }}</p>
-                <p class="special-column-item-p2">{{ v.publishTime }}</p>
-              </div>
-            </div>
-            <div v-if="i !== 0">
-              <div class="special-column-item-bot van-row">
-                <div class="van-col--18">
-                  <p class="special-column-item-bot-p1">{{ v.title }}</p>
-                  <p class="special-column-item-bot-p2">{{ v.desc }}</p>
+    <div class="container-box" v-if="isShow">
+      <div v-for="(item, index) in specialColumnList" :key="index">
+        <div class="card special-column" v-if="essayList[index] && essayList[index].length">
+          <div class="module-title">{{ item.name }}</div>
+          <div class="special-column-item">
+            <div class="special-column-item-top" v-for="(v, i) in essayList[index]" :key="i" @click="handleClick(v.postId)" v-if="essayList.length !== 0">
+              <div v-if="i == 0">
+                <img :src="v.thumbnail" alt=""/>
+                <div class="special-column-item-title">
+                  <p class="special-column-item-p1">{{ v.title }}</p>
+                  <p class="special-column-item-p2">{{ v.publishTime }}</p>
                 </div>
-                <div class="van-col--6 special-column-item-bot-img">
-                  <img :src="v.thumbnail" alt=""/>
+              </div>
+              <div v-if="i !== 0">
+                <div class="special-column-item-bot van-row">
+                  <div class="van-col--18">
+                    <p class="special-column-item-bot-p1">{{ v.title }}</p>
+                    <p class="special-column-item-bot-p2">{{ v.desc }}</p>
+                  </div>
+                  <div class="van-col--6 special-column-item-bot-img">
+                    <img :src="v.thumbnail" alt=""/>
+                  </div>
                 </div>
               </div>
             </div>
@@ -27,6 +29,7 @@
         </div>
       </div>
     </div>
+    <van-empty v-else description="暂无数据" />
   </div>
 </template>
 
@@ -37,7 +40,8 @@ import {categoryTree_api, editList_api} from "@/api/infoUrl";
 
 const router = useRouter(), route = useRoute()
 const specialColumnList = ref([])
-const essayList = ref([])
+const essayList = ref([]) as any
+const isShow = ref(false)
 
 const handleClick = (data: any) => {
   router.push({
@@ -51,8 +55,9 @@ const getListData = () => {
     if (res.code === 200) {
       specialColumnList.value = res.data[0].childs
       res.data[0].childs.forEach((item: any) => {
-        editList_api({categoryId: item.categoryId, status: 1}).then(res => {
+        editList_api({categoryId: item.categoryId, status: 2}).then(res => {
           if (res.code === 200) {
+            if (res.data.list.length > 0) isShow.value = true
             if (res.data.list.length > 3) res.data.list.length = 3
             essayList.value.push(res.data.list)
           }
