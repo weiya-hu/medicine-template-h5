@@ -29,7 +29,7 @@ onBeforeRouteUpdate((to) => {
   background: #f6f6f6;
 }
 .main-tab {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
   overflow: scroll;
 }
 </style>
