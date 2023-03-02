@@ -30,3 +30,10 @@ export const createJsapiSignature_api = (data:IObj) => {
   return get('/wecom/test/wechat/createJsapiSignature',data)
 }
 
+/**
+ * @name 公众号授权链接回调
+ */
+export const wechatAuthJump_api = (data:IObj) => {
+  return get('/wecom/test/wechat/auth/jump',data)
+}
+

@@ -1,6 +1,6 @@
 <template>
   <div class="flexa footer-vue">
-    <div v-for="(v, i) in list" :key="i" class="tab-item flexc" @click="activeIndex = i">
+    <div v-for="(v, i) in list" :key="i" class="tab-item flexc" @click="batbarActive(i)">
       <div class="fleximg tab-img">
         <img :src="activeIndex == i ? v.activeImg : v.img" alt="home" />
       </div>
@@ -15,13 +15,17 @@ import homeImg from '@/assets/images/home.png'
 import homeActiveImg from '@/assets/images/home_active.png'
 import mineActiveImg from '@/assets/images/mine_active.png'
 import mineImg from '@/assets/images/mine.png'
+import { showToast } from 'vant'
 
 const activeIndex = ref(0)
 const list = [
   { text: '首页', img: homeImg, activeImg: homeActiveImg },
   { text: '个人中心', img: mineImg, activeImg: mineActiveImg },
 ]
-
+const batbarActive = (i: number) => {
+  // activeIndex.value = i
+  i && showToast('暂未开放')
+}
 </script>
 
 <style scoped lang="scss">
