@@ -1,26 +1,15 @@
 <template>
   <div class="container">
     <div class="banner">
-      <img src="../../assets/images/home_banner.png" alt="" />
+      <img src="../../assets/images/home_banner.png" alt=""/>
     </div>
     <div class="container-box">
       <!-- 导航栏 -->
       <div class="card module1 van-row">
-        <div class="van-col--6 module1-item">
-          <img src="../../assets/images/hospitalProfile-module1-item1.png" alt="" />
-          <p>科室介绍</p>
-        </div>
-        <div class="van-col--6 module1-item">
-          <img src="../../assets/images/hospitalProfile-module1-item2.png" alt="" />
-          <p>专家介绍</p>
-        </div>
-        <div class="van-col--6 module1-item">
-          <img src="../../assets/images/hospitalProfile-module1-item3.png" alt="" />
-          <p>健康宣教</p>
-        </div>
-        <div class="van-col--6 module1-item">
-          <img src="../../assets/images/hospitalProfile-module1-item4.png" alt="" />
-          <p>来院导航</p>
+        <div class="van-col--6 module1-item" v-for="(item, index) in linkList" :key="index"
+             @click="onClick(item.navUrl, item.code)">
+          <img :src="item.imgUrl" alt=""/>
+          <p>{{ item.title }}</p>
         </div>
       </div>
       <!-- 医疗机构许可证书 -->
@@ -61,30 +50,30 @@
         <div class="module2-item" v-if="listData.length !== 0">
           <div v-html="state.post"></div>
         </div>
-        <van-empty v-else description="暂无数据" />
+        <van-empty v-else description="暂无数据"/>
       </div>
       <!-- 联系我们 -->
       <div class="card module5">
         <div class="module-title">联系我们</div>
         <ul class="module5-item">
           <li>
-            <img src="../../assets/images/hospitalProfile-module5-item1.png" alt="" />
+            <img src="../../assets/images/hospitalProfile-module5-item1.png" alt=""/>
             <p>地址：重庆市渝北区红锦大道111号</p>
           </li>
           <li>
-            <img src="../../assets/images/hospitalProfile-module5-item2.png" alt="" />
+            <img src="../../assets/images/hospitalProfile-module5-item2.png" alt=""/>
             <p>邮编：123456</p>
           </li>
           <li>
-            <img src="../../assets/images/hospitalProfile-module5-item3.png" alt="" />
+            <img src="../../assets/images/hospitalProfile-module5-item3.png" alt=""/>
             <p>网址：www.shanhaiping.coom</p>
           </li>
           <li>
-            <img src="../../assets/images/hospitalProfile-module5-item4.png" alt="" />
+            <img src="../../assets/images/hospitalProfile-module5-item4.png" alt=""/>
             <p>电话：131313131313</p>
           </li>
           <li>
-            <img src="../../assets/images/hospitalProfile-module5-item5.png" alt="" />
+            <img src="../../assets/images/hospitalProfile-module5-item5.png" alt=""/>
             <p>传真：023-23342343</p>
           </li>
         </ul>
@@ -95,21 +84,52 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-import { categoryTree_api, editList_api } from '@/api/infoUrl'
-import { useRoute } from 'vue-router'
-import { _ } from 'lodash'
+import {onMounted, ref} from 'vue'
+import {categoryTree_api, editList_api} from '@/api/infoUrl'
+import {useRoute, useRouter} from 'vue-router'
+import {_} from 'lodash'
 
-const route = useRoute()
+const route = useRoute(), router = useRouter()
 const state = ref({
   post: '',
 })
 const listData = ref([])
-
+const linkList = ref([
+  {
+    title: '科室介绍',
+    imgUrl: new URL('../../assets/images/hospitalProfile-module1-item1.png', import.meta.url).href,
+    navUrl: 'departments',
+    code: 'DEPARTMENT_MANAGEMENT'
+  },
+  {
+    title: '专家介绍',
+    imgUrl: new URL('../../assets/images/hospitalProfile-module1-item2.png', import.meta.url).href,
+    navUrl: 'expertTeam',
+    code: 'PHYSICIAN_MANAGEMENT'
+  },
+  {
+    title: '医疗动态',
+    imgUrl: new URL('../../assets/images/hospitalProfile-module1-item3.png', import.meta.url).href,
+    navUrl: 'medicalTrends',
+    code: 'MEDICAL_TRENDS'
+  },
+  {
+    title: '来院导航',
+    imgUrl: new URL('../../assets/images/hospitalProfile-module1-item4.png', import.meta.url).href,
+    navUrl: 'tohospital',
+    code: ''
+  },
+])
+const onClick = (data: any, code: any) => {
+  router.push({
+    path: data,
+    query: { code: code },
+  })
+}
 const getData = () => {
-  categoryTree_api({ code: route.query.code, allChild: true }).then((res) => {
+  categoryTree_api({code: route.query.code, allChild: true}).then((res) => {
     if (res.code === 200) {
-      editList_api({ categoryId: res.data[0].childs[0].categoryId, status: 2 }).then((res) => {
+      editList_api({categoryId: res.data[0].childs[0].categoryId, status: 2}).then((res) => {
         if (res.code === 200) {
           listData.value = res.data.list
           state.value = {
@@ -163,6 +183,7 @@ onMounted(() => {
         width: 100%;
         height: 100%;
       }
+
       p {
         margin-top: 0.15rem;
       }
