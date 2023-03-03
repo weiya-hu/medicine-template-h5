@@ -56,24 +56,24 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/infoUrl/expertTeam.vue'),
         meta: { title: '专家团队' },
       },
-      {
-        path: '/medicalguide',
-        name: 'MedicalGuide',
-        component: () => import('@/views/infoUrl/medicineGuide.vue'),
-        meta: { title: '就医指南' },
-      },
+      // {
+      //   path: '/medicalguide',
+      //   name: 'MedicalGuide',
+      //   component: () => import('@/views/infoUrl/medicineGuide.vue'),
+      //   meta: { title: '就医指南' },
+      // },
       {
         path: '/medicalInsurance',
         name: 'MedicalInsurance',
         component: () => import('@/views/infoUrl/medicalInsurance.vue'),
         meta: { title: '医保专栏' },
       },
-      // {
-      //   path: '/medicalGuide',
-      //   name: 'MedicalGuide',
-      //   component: () => import('@/views/infoUrl/medicalGuide.vue'),
-      //   meta: { title: '就医指南' },
-      // },
+      {
+        path: '/medicalGuide',
+        name: 'MedicalGuide',
+        component: () => import('@/views/infoUrl/medicalGuide.vue'),
+        meta: { title: '就医指南' },
+      },
       {
         path: '/medicaltrends',
         name: 'MedicalTrends',

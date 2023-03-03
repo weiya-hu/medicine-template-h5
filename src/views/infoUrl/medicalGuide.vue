@@ -1,19 +1,19 @@
 <template>
   <div class="container">
-    <van-cell-group inset v-if="guideList.length !== 0">
+    <van-cell-group inset>
       <van-field v-model="search" @click-right-icon="onChange">
         <template #right-icon>
           <img src="../../assets/images/search.png"/>
         </template>
       </van-field>
 
-      <van-cell is-link @click="onClick(item.categoryId)" v-for="(item, index) in guideList" :key="index">
+      <van-cell is-link @click="onClick(item.categoryId)" v-for="(item, index) in guideList" :key="index" v-if="guideList.length !== 0">
         <template #title>
           <span class="guide-item">{{ item.name }}</span>
         </template>
       </van-cell>
+      <van-empty v-else description="暂无数据" />
     </van-cell-group>
-    <van-empty v-else description="暂无数据" />
     <van-popup
         v-model:show="showGuide"
         round
