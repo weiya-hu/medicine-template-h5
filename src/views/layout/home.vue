@@ -53,7 +53,7 @@
               v-for="(items, indexs) in item.navBar"
               :key="indexs"
               class="module2-swiper-item van-col--6"
-              @click="visitClick(items.navUrl)"
+              @click="visitClick(items.navUrl, items.code)"
             >
               <img :src="items.imageUrl" alt="" />
               <p>{{ items.text }}</p>
@@ -166,41 +166,49 @@ const visitUrlList = ref([
     navBar: [
       {
         navUrl: 'queueCall',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item1.png', import.meta.url).href,
         text: '排队叫号',
       },
       {
         navUrl: 'examination',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item2.png', import.meta.url).href,
         text: '体检预约',
       },
       {
         navUrl: 'medicalTechnology',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item3.png', import.meta.url).href,
         text: '医技预约',
       },
       {
         navUrl: 'record',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item4.png', import.meta.url).href,
         text: '预约记录',
       },
       {
         navUrl: 'report',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item5.png', import.meta.url).href,
         text: '检查报告',
       },
       {
         navUrl: 'discharge',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item6.png', import.meta.url).href,
         text: '出院办理',
       },
       {
         navUrl: 'reservation',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item7.png', import.meta.url).href,
         text: '疫苗预约',
       },
       {
         navUrl: 'nucleicAcidTest',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item8.png', import.meta.url).href,
         text: '核酸检查',
       },
@@ -209,32 +217,38 @@ const visitUrlList = ref([
   {
     navBar: [
       {
-        navUrl: 'insuranceColumn',
+        navUrl: 'medicalInsurance',
+        code: 'MEDICAL_INSURANCE',
         imageUrl: new URL('../../assets/images/home_module2_item9.png', import.meta.url).href,
         text: '医保专栏',
       },
       {
         navUrl: 'commercialInsurance',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item10.png', import.meta.url).href,
         text: '商业医保',
       },
       {
         navUrl: 'tencentDictionary',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item11.png', import.meta.url).href,
         text: '腾讯医典',
       },
       {
         navUrl: 'restaurant',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item12.png', import.meta.url).href,
         text: '餐饮服务',
       },
       {
         navUrl: 'tohospital',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item13.png', import.meta.url).href,
         text: '到院导航',
       },
       {
         navUrl: 'houseNavigation',
+        code: '',
         imageUrl: new URL('../../assets/images/home_module2_item14.png', import.meta.url).href,
         text: '院内导航',
       },
@@ -277,9 +291,12 @@ const infoUrlList = ref([
 ])
 
 // 就诊服务
-const visitClick = (data: any) => {
-  if (data === 'tohospital') {
-    router.push(data)
+const visitClick = (data: any, code: any) => {
+  if (data === 'tohospital' || data === 'medicalInsurance') {
+    router.push({
+      path: data,
+      query: {code: code}
+    })
   } else {
     showToast('暂未开放')
   }
