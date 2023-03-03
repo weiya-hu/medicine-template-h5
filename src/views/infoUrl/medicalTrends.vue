@@ -7,7 +7,7 @@
           <div class="special-column-item">
             <div class="special-column-item-top" v-for="(v, i) in essayList[index]" :key="i" @click="handleClick(v.postId)" v-if="essayList.length !== 0">
               <div v-if="i == 0">
-                <img :src="v.thumbnail" alt=""/>
+                <img :src="v.thumbnail || imgUrl" alt=""/>
                 <div class="special-column-item-title">
                   <p class="special-column-item-p1">{{ v.title }}</p>
                   <p class="special-column-item-p2">{{ v.publishTime }}</p>
@@ -20,7 +20,7 @@
                     <p class="special-column-item-bot-p2">{{ v.desc }}</p>
                   </div>
                   <div class="van-col--6 special-column-item-bot-img">
-                    <img :src="v.thumbnail" alt=""/>
+                    <img :src="v.thumbnail || imgUrl" alt=""/>
                   </div>
                 </div>
               </div>
@@ -37,6 +37,7 @@
 import {onMounted, ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {categoryTree_api, editList_api} from "@/api/infoUrl";
+import imgUrl from '@/assets/images/home_module4_item2.png'
 
 const router = useRouter(), route = useRoute()
 const specialColumnList = ref([])
