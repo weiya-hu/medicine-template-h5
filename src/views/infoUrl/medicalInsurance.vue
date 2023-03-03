@@ -2,10 +2,10 @@
   <div class="container">
     <div class="container-box" v-if="isShow">
       <div v-for="(item, index) in specialColumnList" :key="index">
-        <div class="card special-column" v-if="essayList[index] && essayList[index].length">
+        <div class="card special-column" v-if="essayList[item.categoryId] && essayList[item.categoryId].length">
           <div class="module-title">{{ item.name }}</div>
           <div class="special-column-item">
-            <div class="special-column-item-top" v-for="(v, i) in essayList[index]" :key="i" @click="handleClick(v.postId)" v-if="essayList.length !== 0">
+            <div class="special-column-item-top" :class="essayList[item.categoryId].length == 3 ? 'special-column-item-top-bor' : ''" v-for="(v, i) in essayList[item.categoryId]" :key="i" @click="handleClick(v.postId)">
               <div v-if="i == 0">
                 <img :src="v.thumbnail || imgUrl" alt=""/>
                 <div class="special-column-item-title">
@@ -41,7 +41,7 @@ import imgUrl from '@/assets/images/home_module4_item2.png'
 
 const router = useRouter(), route = useRoute()
 const specialColumnList = ref([])
-const essayList = ref([]) as any
+const essayList = ref({}) as any
 const isShow = ref(false)
 
 const handleClick = (data: any) => {
@@ -60,7 +60,7 @@ const getListData = () => {
           if (res.code === 200) {
             if (res.data.list.length > 0) isShow.value = true
             if (res.data.list.length > 3) res.data.list.length = 3
-            essayList.value.push(res.data.list)
+            essayList.value[item.categoryId] = res.data.list
           }
         })
       })
@@ -111,6 +111,10 @@ onMounted(() => {
           color: #999999;
         }
       }
+    }
+
+    .special-column-item-top-bor:nth-child(2) {
+      border-bottom: 0.01rem solid #CCCCCC;
     }
 
     .special-column-item-bot {
