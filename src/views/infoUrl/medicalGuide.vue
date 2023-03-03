@@ -21,6 +21,7 @@
         position="bottom"
         :style="{ height: '82%' }"
     >
+      <div class="return" @click="showGuide = false"><van-icon name="arrow-left" />返回</div>
       <div class="should-know" v-if="listData.length !== 0">
         <div v-html="state.post"></div>
       </div>
@@ -137,6 +138,13 @@ onMounted(() => {
     //  font-weight: 400;
     //  color: #333333;
     //}
+  }
+  .return {
+    padding: 0.15rem 0 0 0.15rem;
+    font-size: 0.15rem;
+    font-family: PingFang SC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #666666;
   }
 }
 </style>
