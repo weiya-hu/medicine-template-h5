@@ -5,7 +5,9 @@
 <script setup lang="ts">
 const url = window.location.pathname
 const redirectUrl = encodeURIComponent(
-  url === '/empower' ? 'http://test.hospital.shanhaiping.com/home' : window.location.href
+  url === '/empower'
+    ? window.location.protocol + '//' + window.location.host + '/home'
+    : window.location.href
 )
 
 window.location.href = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0d195388f4235eca&redirect_uri=${redirectUrl}&response_type=code&scope=snsapi_userinfo&state=aaaaaaa&component_appid=wx5f79f0b71e2425c3#wechat_redirect`

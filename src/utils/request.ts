@@ -24,7 +24,7 @@ declare module 'axios' {
 // 是否显示重新登录
 export const isRelogin = { show: false }
 // 设置默认地址
-axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/prod-api'
 // 设置超时时间
 axios.defaults.timeout = 15000
 
@@ -37,8 +37,15 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
   if ((getToken() || sessionStorage.getItem('register_token')) && !isToken) {
     config.headers = {
       ...config.headers,
+      corpId : '1571886132629123072',
       'Content-Type': 'application/json', //'application/x-www-form-urlencoded';
       Authorization: 'Bearer ' + (getToken() || sessionStorage.getItem('register_token')),
+    }
+  }else{
+    config.headers = {
+      ...config.headers,
+      corpId : '1571886132629123072',
+      'Content-Type': 'application/json', //'application/x-www-form-urlencoded';
     }
   }
   // get请求映射params参数

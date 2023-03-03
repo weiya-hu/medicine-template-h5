@@ -32,13 +32,13 @@ export default defineConfig(({ command, mode }) => {
       open: false,
       https: false,
       proxy: {
-        '/api': {
+        '/prod-api': {
           // target: 'http://api.sp.shanhaiping.com',
           // target: 'http://192.168.1.37:8080/',
           // target: 'http://192.168.1.100:8080/',
           target: 'https://test.api.shanhaiping.com',
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ''),
+          rewrite: (path) => path.replace(/^\/prod-api/, ''),
         },
       },
     },
