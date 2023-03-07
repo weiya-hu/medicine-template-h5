@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container table_style">
     <div v-html="state.post"></div>
   </div>
 </template>

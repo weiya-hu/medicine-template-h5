@@ -86,6 +86,44 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/infoUrl/medicalTrendsDetails.vue'),
         meta: { title: 'xx医院' },
       },
+      // 挂号
+      {
+        path: '/register',
+        name: 'Register',
+        component: () => import('@/views/functional/register.vue'),
+        meta: { title: '挂号' },
+      },
+      {
+        path: '/registrdept',
+        name: 'RegistrDept',
+        component: () => import('@/views/functional/registrDept.vue'),
+        meta: { title: '挂号' },
+      },
+      {
+        path: '/registerspecialist',
+        name: 'RegisterSpecialist',
+        component: () => import('@/views/functional/registerSpecialist.vue'),
+        meta: { title: '挂号' },
+      },
+      {
+        path: '/registerinfo',
+        name: 'RegisterInfo',
+        component: () => import('@/views/functional/registerInfo.vue'),
+        meta: { title: '挂号' },
+      },
+      // 预约记录
+      {
+        path: '/record',
+        name: 'Record',
+        component: () => import('@/views/visit/record.vue'),
+        meta: { title: '挂号记录' },
+      },
+      {
+        path: '/recorddetails',
+        name: 'RecordDetails',
+        component: () => import('@/views/visit/recordDetails.vue'),
+        meta: { title: '挂号记录详情' },
+      },
     ],
   },
 

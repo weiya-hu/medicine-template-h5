@@ -5,7 +5,7 @@
     </van-sidebar>
 
     <div class="content" :style="{'width' : isShow ? 'calc(100% - 0.80rem)' : '100%' }">
-      <div class="content-box" v-if="dataLength.length !== 0">
+      <div class="content-box table_style" v-if="dataLength.length !== 0">
         <div class="content-box-title">{{ state.title }}</div>
         <div class="content-box-text" v-html="state.post"></div>
       </div>

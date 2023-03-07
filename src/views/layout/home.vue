@@ -15,32 +15,11 @@
     <div class="container-box">
       <!-- 功能模块 -->
       <div class="card module1 van-row">
-        <div class="van-col--12 module1-item" @click="featuredClick">
-          <img src="../../assets/images/home_module1_item1.png" alt="" />
+        <div class="van-col--12 module1-item" @click="functionalClick(item.navUrl)" v-for="(item, index) in functionalList" :key="index">
+          <img :src="item.imageUrl" alt="" />
           <div class="module1-item-text">
-            <p class="module1-item-text-p1">预约挂号</p>
-            <p class="module1-item-text-p2">查询医保记录</p>
-          </div>
-        </div>
-        <div class="van-col--12 module1-item" @click="featuredClick">
-          <img src="../../assets/images/home_module1_item2.png" alt="" />
-          <div class="module1-item-text">
-            <p class="module1-item-text-p1">门诊缴费</p>
-            <p class="module1-item-text-p2">手机在线缴费</p>
-          </div>
-        </div>
-        <div class="van-col--12 module1-item" @click="featuredClick">
-          <img src="../../assets/images/home_module1_item3.png" alt="" />
-          <div class="module1-item-text">
-            <p class="module1-item-text-p1">医保查询</p>
-            <p class="module1-item-text-p2">查询医保记录</p>
-          </div>
-        </div>
-        <div class="van-col--12 module1-item" @click="featuredClick">
-          <img src="../../assets/images/home_module1_item4.png" alt="" />
-          <div class="module1-item-text">
-            <p class="module1-item-text-p1">医保电子凭证</p>
-            <p class="module1-item-text-p2">绑定医保信息</p>
+            <p class="module1-item-text-p1">{{item.text1}}</p>
+            <p class="module1-item-text-p2">{{item.text2}}</p>
           </div>
         </div>
       </div>
@@ -160,24 +139,49 @@ const bannerList = ref([
   },
 ])
 
+// 功能模块
+const functionalList = ref([
+  {
+    navUrl: 'register',
+    imageUrl: new URL('../../assets/images/home_module1_item1.png', import.meta.url).href,
+    text1: '预约挂号',
+    text2: '查询医保记录',
+  },
+  {
+    imageUrl: new URL('../../assets/images/home_module1_item2.png', import.meta.url).href,
+    text1: '门诊缴费',
+    text2: '手机在线缴费'
+  },
+  {
+    imageUrl: new URL('../../assets/images/home_module1_item3.png', import.meta.url).href,
+    text1: '医保查询',
+    text2: '查询医保记录'
+  },
+  {
+    imageUrl: new URL('../../assets/images/home_module1_item4.png', import.meta.url).href,
+    text1: '医保电子凭证',
+    text2: '绑定医保信息'
+  },
+])
+
 // 就诊服务
 const visitUrlList = ref([
   {
     navBar: [
       {
-        navUrl: 'queueCall',
+        // navUrl: 'queueCall',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item1.png', import.meta.url).href,
         text: '排队叫号',
       },
       {
-        navUrl: 'examination',
+        // navUrl: 'examination',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item2.png', import.meta.url).href,
         text: '体检预约',
       },
       {
-        navUrl: 'medicalTechnology',
+        // navUrl: 'medicalTechnology',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item3.png', import.meta.url).href,
         text: '医技预约',
@@ -189,25 +193,25 @@ const visitUrlList = ref([
         text: '预约记录',
       },
       {
-        navUrl: 'report',
+        // navUrl: 'report',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item5.png', import.meta.url).href,
         text: '检查报告',
       },
       {
-        navUrl: 'discharge',
+        // navUrl: 'discharge',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item6.png', import.meta.url).href,
         text: '出院办理',
       },
       {
-        navUrl: 'reservation',
+        // navUrl: 'reservation',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item7.png', import.meta.url).href,
         text: '疫苗预约',
       },
       {
-        navUrl: 'nucleicAcidTest',
+        // navUrl: 'nucleicAcidTest',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item8.png', import.meta.url).href,
         text: '核酸检查',
@@ -223,19 +227,19 @@ const visitUrlList = ref([
         text: '医保专栏',
       },
       {
-        navUrl: 'commercialInsurance',
+        // navUrl: 'commercialInsurance',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item10.png', import.meta.url).href,
         text: '商业医保',
       },
       {
-        navUrl: 'tencentDictionary',
+        // navUrl: 'tencentDictionary',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item11.png', import.meta.url).href,
         text: '腾讯医典',
       },
       {
-        navUrl: 'restaurant',
+        // navUrl: 'restaurant',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item12.png', import.meta.url).href,
         text: '餐饮服务',
@@ -247,7 +251,7 @@ const visitUrlList = ref([
         text: '到院导航',
       },
       {
-        navUrl: 'houseNavigation',
+        // navUrl: 'houseNavigation',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item14.png', import.meta.url).href,
         text: '院内导航',
@@ -290,9 +294,17 @@ const infoUrlList = ref([
   },
 ])
 
+// 功能模块
+const functionalClick = (url: any) => {
+  if (url) {
+    router.push('register')
+  } else {
+    showToast('暂未开放')
+  }
+}
 // 就诊服务
 const visitClick = (data: any, code: any) => {
-  if (data === 'tohospital' || data === 'medicalInsurance') {
+  if (data) {
     router.push({
       path: data,
       query: {code: code}

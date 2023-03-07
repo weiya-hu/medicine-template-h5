@@ -47,7 +47,7 @@
       <!--      </div>-->
       <div class="card module2">
         <div class="module-title">{{ state.title }}</div>
-        <div class="module2-item" v-if="listData.length !== 0">
+        <div class="module2-item table_style" v-if="listData.length !== 0">
           <div v-html="state.post"></div>
         </div>
         <van-empty v-else description="暂无数据"/>

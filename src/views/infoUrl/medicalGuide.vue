@@ -22,7 +22,7 @@
         :style="{ height: '82%' }"
     >
       <div class="return" @click="showGuide = false"><van-icon name="arrow-left" />返回</div>
-      <div class="should-know" v-if="listData.length !== 0">
+      <div class="should-know table_style" v-if="listData.length !== 0">
         <div v-html="state.post"></div>
       </div>
       <van-empty v-else description="暂无数据" />
