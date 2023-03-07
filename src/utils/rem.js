@@ -1,4 +1,4 @@
-;(function () {
+(function () {
   // 在标准 375px 适配下，100px = 1rem;
   const baseFontSize = 100
   const baseWidth = 375

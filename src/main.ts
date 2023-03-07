@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import Vant from 'vant';
+import {Icon} from 'vant'
 import '@/utils/rem.js'
 import 'vant/lib/index.css';
 import './assets/styles/base.scss'
@@ -13,6 +14,7 @@ const app = createApp(App)
 
 app
   .use(Vant)
+   .use(Icon)
   .use(createPinia())
   .use(router)
 let corpId = getUrlParam('code')

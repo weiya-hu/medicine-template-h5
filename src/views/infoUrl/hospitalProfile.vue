@@ -136,6 +136,7 @@ const getData = () => {
             ...state.value,
             post: _.unescape(_.unescape(res.data.list[0].post)),
           }
+          console.log(state.value.post)
         }
       })
     }

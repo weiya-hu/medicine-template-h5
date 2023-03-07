@@ -137,6 +137,12 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/noaccess/index.vue'),
     name: 'noaccess',
   },
+  {
+    path:'/pay/payRecord',
+    component:()=>import('@/views/pays/payRecord.vue'),
+    name:"Pay",
+  }
+
 ]
 
 const router = createRouter({
