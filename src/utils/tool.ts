@@ -104,3 +104,15 @@ export async function downloadFile(type?: string, receipt?: string) {
     window.URL.revokeObjectURL(blobUrl)
   }
 }
+
+/**
+ * 获取页面参数
+ */
+export function getUrlParam(name: string) {
+  const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+  const r = window.location.search.substring(1).match(reg)
+  if (r != null) {
+    return decodeURI(r[2])
+  }
+  return null
+}

@@ -6,16 +6,17 @@ import 'vant/lib/index.css';
 import './assets/styles/base.scss'
 import App from './App.vue'
 import router from './router'
-import { getToken } from '@/utils/cache'
 import { mainStore } from '@/stores/mainStore'
-
+import { getUrlParam } from '@/utils/tool'
+ 
 const app = createApp(App)
 
 app
   .use(Vant)
   .use(createPinia())
   .use(router)
-
+let corpId = getUrlParam('code')
+corpId && localStorage.setItem('corpId',corpId)
 const store = mainStore()
 // store.setDefaultToken().finally(() => {
 app.mount('#app') //换取token之后再挂载页面
