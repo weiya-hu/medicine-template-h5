@@ -89,27 +89,34 @@ export const routes: RouteRecordRaw[] = [
       // 挂号
       {
         path: '/register',
-        name: 'Register',
-        component: () => import('@/views/functional/register.vue'),
-        meta: { title: '挂号' },
-      },
-      {
-        path: '/registrdept',
-        name: 'RegistrDept',
-        component: () => import('@/views/functional/registrDept.vue'),
-        meta: { title: '挂号' },
-      },
-      {
-        path: '/registerspecialist',
-        name: 'RegisterSpecialist',
-        component: () => import('@/views/functional/registerSpecialist.vue'),
-        meta: { title: '挂号' },
-      },
-      {
-        path: '/registerinfo',
-        name: 'RegisterInfo',
-        component: () => import('@/views/functional/registerInfo.vue'),
-        meta: { title: '挂号' },
+        // name: 'Register',
+        // component: () => import('@/views/functional/register.vue'),
+        children: [
+          {
+            path: '/register',
+            name: 'Register',
+            component: () => import('@/views/functional/register.vue'),
+            meta: { title: '挂号' },
+          },
+          {
+            path: '/registrdept',
+            name: 'RegistrDept',
+            component: () => import('@/views/functional/registrDept.vue'),
+            meta: { title: '挂号' },
+          },
+          {
+            path: '/registerspecialist',
+            name: 'RegisterSpecialist',
+            component: () => import('@/views/functional/registerSpecialist.vue'),
+            meta: { title: '挂号' },
+          },
+          {
+            path: '/registerinfo',
+            name: 'RegisterInfo',
+            component: () => import('@/views/functional/registerInfo.vue'),
+            meta: { title: '挂号' },
+          },
+        ]
       },
       // 预约记录
       {
