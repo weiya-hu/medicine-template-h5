@@ -124,6 +124,38 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/visit/recordDetails.vue'),
         meta: { title: '挂号记录详情' },
       },
+      {
+        path: '/waitstep',
+        name: 'WaitStep',
+        component: () => import('@/views/layout/waitStep.vue'),
+        meta: { title: '排队进度' },
+      },
+      {
+        path: '/visitlog',
+        name: 'VisitLog',
+        component: () => import('@/views/layout/rview.vue'),
+        redirect : '/visitlog',
+        children: [
+          {
+            path: '/visitlog',
+            name: 'Visitlog',
+            component: () => import('@/views/layout/visitLog/visitLog.vue'),
+            meta: { title: '门诊就诊记录' },
+          },
+          {
+            path: '/visitlog/list',
+            name: 'VisitLogList',
+            component: () => import('@/views/layout/visitLog/visitLogList.vue'),
+            meta: { title: '就诊记录列表' },
+          },
+          {
+            path: '/visitlog/detail',
+            name: 'VisitLogDetail',
+            component: () => import('@/views/layout/visitLog/visitLogDetail.vue'),
+            meta: { title: '就诊记录详情' },
+          },
+        ]
+      },
     ],
   },
 
@@ -149,5 +181,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: routes,
 })
+console.log(import.meta.env.BASE_URL)
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title || '医院'
+  next()
+})
 
 export default router
+
