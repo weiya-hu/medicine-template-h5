@@ -32,7 +32,7 @@
           </div>
         </div>
       </div>
-      <van-calendar v-model:show="showData" :min-date="minDate" :max-date="maxDate" :formatter="formatter"
+      <van-calendar color="#0564F7" v-model:show="showData" :min-date="minDate" :max-date="maxDate" :formatter="formatter"
                     @confirm="onConfirm"/>
 
       <div class="list">

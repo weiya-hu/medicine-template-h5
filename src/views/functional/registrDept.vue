@@ -24,7 +24,7 @@
           </div>
         </div>
       </div>
-      <van-calendar v-model:show="showData" :min-date="minDate" :max-date="maxDate" :formatter="formatter"
+      <van-calendar color="#0564F7" v-model:show="showData" :min-date="minDate" :max-date="maxDate" :formatter="formatter"
                     @confirm="onConfirm"/>
       <div class="list">
         <van-tabs v-model:active="active" swipeable>
@@ -38,7 +38,7 @@
               <div class="specialist-item" v-for="(items, indexs) in item.list" :key="indexs" @click="onClick">
                 <div class="item-top">
                   <div class="item-top-left">
-                    <img :src="items.userImg" alt=""/>
+                    <img :src="items.userImg || deFaultHeader_img" alt=""/>
                   </div>
                   <div class="item-top-center">
                     <div class="item-top-center-p1">{{ items.name }}</div>
@@ -64,6 +64,7 @@
 <script lang="ts" setup>
 import {onMounted, ref} from "vue";
 import {useRouter} from "vue-router";
+import deFaultHeader_img from '@/assets/images/header.png'
 
 const router = useRouter();
 const active = ref(0);
@@ -126,7 +127,7 @@ const specialistList = ref([
     title: '全部',
     list: [
       {
-        userImg: new URL('../../assets/images/register-dept-banner.png', import.meta.url).href,
+        userImg: '',
         name: '马东锡 (风湿免疫科)',
         dept: '专科系列丨专家',
         money: '150',
@@ -134,7 +135,7 @@ const specialistList = ref([
         remaining: 10
       },
       {
-        userImg: new URL('../../assets/images/register-dept-banner.png', import.meta.url).href,
+        userImg: '',
         name: '马东锡 (风湿免疫科)',
         dept: '专科系列丨专家',
         money: '150',
@@ -147,7 +148,7 @@ const specialistList = ref([
     title: '普通',
     list: [
       {
-        userImg: new URL('../../assets/images/register-dept-banner.png', import.meta.url).href,
+        userImg: '',
         name: '马东锡 (风湿免疫科)',
         dept: '专科系列丨专家',
         money: '150',
@@ -160,7 +161,7 @@ const specialistList = ref([
     title: '专家',
     list: [
       {
-        userImg: new URL('../../assets/images/register-dept-banner.png', import.meta.url).href,
+        userImg: '',
         name: '马东锡 (风湿免疫科)',
         dept: '专科系列丨专家',
         money: '150',

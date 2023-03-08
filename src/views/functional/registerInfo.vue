@@ -3,7 +3,7 @@
     <div class="info-title">请确认预约挂号信息</div>
     <div class="info-item">
       <van-cell-group>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-hospitalArea.png" alt="" class="van-cell-img1" />
           </template>
@@ -14,7 +14,7 @@
             <div class="van-cell-value">{{state.hospitalArea}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-dept.png" alt="" class="van-cell-img2" />
           </template>
@@ -25,7 +25,7 @@
             <div class="van-cell-value">{{state.dept}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-doctor.png" alt="" class="van-cell-img2" />
           </template>
@@ -36,7 +36,7 @@
             <div class="van-cell-value">{{state.doctor}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-rank.png" alt="" class="van-cell-img2" />
           </template>
@@ -47,7 +47,7 @@
             <div class="van-cell-value">{{state.rank}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-time.png" alt="" class="van-cell-img2" />
           </template>
@@ -58,7 +58,7 @@
             <div class="van-cell-value">{{state.time}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-area.png" alt="" class="van-cell-img3" />
           </template>
@@ -72,8 +72,8 @@
       </van-cell-group>
     </div>
     <div class="info-item">
-      <van-cell-group>
-        <van-cell>
+      <van-cell-group :border="false">
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-amount.png" alt="" class="van-cell-img2" />
           </template>
@@ -84,7 +84,7 @@
             <div class="van-cell-value">{{state.amount}}</div>
           </template>
         </van-cell>
-        <van-cell>
+        <van-cell :border="false">
           <template #icon>
             <img src="../../assets/images/register-info-name.png" alt="" class="van-cell-img2" />
           </template>
@@ -96,6 +96,10 @@
           </template>
         </van-cell>
       </van-cell-group>
+      <div class="add-visit">
+        <div class="add-visit-tag">李冬冬 ID:123123123</div>
+        <van-button type="default" size="small" @click="onClick">+ 新增就诊人</van-button>
+      </div>
     </div>
     <div class="tips">
       温馨提示<br/>
@@ -109,7 +113,7 @@
       <van-checkbox v-model="checked" checked-color="#0564F7">我已阅读并知晓以上内容</van-checkbox>
     </div>
     <div class="btn-bon">
-      <van-button>取消预约</van-button>
+      <van-button @click="reset">取消预约</van-button>
       <van-button type="primary" @click="submit">确认预约</van-button>
     </div>
   </div>
@@ -117,8 +121,10 @@
 
 <script lang="ts" setup>
 import {ref} from "vue";
-import {showSuccessToast, showToast} from "vant";
+import {showDialog, showSuccessToast} from "vant";
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const checked = ref(false)
 const state = ref({
   hospitalArea: '渝中区',
@@ -130,18 +136,31 @@ const state = ref({
   amount: '200',
   name: '李东东'
 })
-
+const onClick = () => {
+  router.push('visitlog')
+}
+const reset = () => {
+  router.go(-1)
+}
 const submit = () => {
   if (checked.value) {
     showSuccessToast('预约成功');
   } else {
-    showToast('提示内容');
+    showDialog({
+      title: '提示',
+      message: '请阅读并确认知晓以上提示内容',
+      confirmButtonText: '确定',
+      confirmButtonColor: '#0564F7'
+    }).then(() => {
+      // on close
+    });
   }
 }
 </script>
 <style lang="scss" scoped>
 .container {
   padding: 0.25rem 0.15rem 1.00rem;
+  background: #F6F6F6;
   .info-title {
     padding-left: 0.10rem;
     font-size: 0.17rem;
@@ -163,11 +182,13 @@ const submit = () => {
     }
   }
   .info-item {
+    background: #FFFFFF;
     margin-top: 0.15rem;
     border-radius: 0.12rem;
     overflow: hidden;
     :deep(.van-cell) {
       align-items: center;
+      line-height: 0.30rem;
       .van-cell__title, .van-cell__value {
         flex: auto;
       }
@@ -195,6 +216,26 @@ const submit = () => {
         font-family: PingFang SC-Bold, PingFang SC;
         font-weight: bold;
         color: #333333;
+      }
+    }
+    .add-visit {
+      padding: 0.15rem;
+      display: flex;
+      .add-visit-tag {
+        height: 0.30rem;
+        line-height: 0.30rem;
+        padding: 0 0.10rem;
+        text-align: center;
+        background: #E4EEFF;
+        border-radius: 0.06rem;
+        font-size: 0.14rem;
+        font-family: PingFang SC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #0564F7;
+      }
+      .van-button {
+        color: #0564F7;
+        margin-left: 0.10rem;
       }
     }
   }

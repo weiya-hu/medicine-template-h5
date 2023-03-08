@@ -88,7 +88,7 @@
     <div class="tips">注意：在距离就诊时间xx小时前可取消挂号。小于2小时不予取消</div>
   </div>
   <div class="btn">
-    <van-button type="primary" @click="submit">取消挂号</van-button>
+    <van-button color="#0564F7" block @click="submit">取消挂号</van-button>
   </div>
 </template>
 
@@ -157,7 +157,7 @@ const submit = () => {
     overflow: hidden;
     :deep(.van-cell) {
       align-items: center;
-      padding: 0.15rem 0.16rem;
+      line-height: 0.30rem;
       .van-cell__title, .van-cell__value {
         flex: auto;
       }
@@ -195,15 +195,12 @@ const submit = () => {
   left: 0;
   bottom: 0;
   .van-button {
-    width: 100%;
-    height: 0.40rem;
-    border: 0;
-    border-radius: 0.06rem;
+    height: 100%;
   }
-  .van-button--primary {
-    background: #0564F7;
-    border: 0.01rem solid #0564F7;
-  }
+  //.van-button--primary {
+  //  background: #0564F7;
+  //  border: 0.01rem solid #0564F7;
+  //}
 }
 //:deep(.van-dialog__confirm), :deep(.van-dialog__confirm):active {
 //  color: #0564F7;
