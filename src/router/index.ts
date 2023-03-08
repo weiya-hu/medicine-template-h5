@@ -89,8 +89,9 @@ export const routes: RouteRecordRaw[] = [
       // 挂号
       {
         path: '/register',
-        // name: 'Register',
-        // component: () => import('@/views/functional/register.vue'),
+        name: 'Register',
+        component: () => import('@/views/layout/rview.vue'),
+        redirect : '/register',
         children: [
           {
             path: '/register',
