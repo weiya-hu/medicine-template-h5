@@ -148,6 +148,7 @@ const functionalList = ref([
     text2: '查询医保记录',
   },
   {
+    navUrl: 'payRecord',
     imageUrl: new URL('../../assets/images/home_module1_item2.png', import.meta.url).href,
     text1: '门诊缴费',
     text2: '手机在线缴费'
@@ -297,7 +298,7 @@ const infoUrlList = ref([
 // 功能模块
 const functionalClick = (url: any) => {
   if (url) {
-    router.push('register')
+    router.push(url)
   } else {
     showToast('暂未开放')
   }

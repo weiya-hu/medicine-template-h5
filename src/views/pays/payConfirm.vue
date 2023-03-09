@@ -1,70 +1,112 @@
 <template>
-  <div class="main">
-    <div class="wrapper">
-      <div class="number">XXXXXXXXXXXXXXX支付订单</div>
-      <div class="money">
-        <div>￥</div>
-        <div>550</div>
+  <div class="container">
+    <div class="banner">
+      <div class="banner-pay">付款给</div>
+      <div class="banner-name">重庆儿童医院</div>
+    </div>
+    <div class="cell-group">
+      <div class="cell-item cell-item1">
+        <div class="cell-item-p1">费用总额</div>
+        <div class="cell-item-p1">240元</div>
       </div>
-      <div class="info">
-        <van-cell title="总金额" value="550.00元" :border="false"></van-cell>
-        <van-cell title="医保支付" value="-60.00元" :border="false"></van-cell>
-        <van-divider></van-divider>
-        <van-cell title="合计待支付" value="-240.00元" :border="false"></van-cell>
+      <van-divider :style="{borderColor: '#CCCCCC' }" />
+      <div class="cell-item">
+        <div class="cell-item-p2">医保支付</div>
+        <div class="cell-item-p2">200元</div>
       </div>
-
-      <van-button block color="#0564F7" style="margin: .4rem 0">立即支付</van-button>
+      <div class="cell-item">
+        <div class="cell-item-p2">自费</div>
+        <div class="cell-item-p2">40元</div>
+      </div>
+      <div class="cell-item">
+        <div class="cell-item-p3">现金支付</div>
+        <div class="cell-item-p3">0元</div>
+      </div>
     </div>
   </div>
+  <div class="btn">
+    <div class="money">您还需支付：<span>40元</span></div>
+    <van-button color="#0564F7">去支付</van-button>
+  </div>
 </template>
+<script lang="ts" setup>
 
-<script setup></script>
+</script>
 
-<style scoped lang="scss">
-@import "src/assets/styles/pay.scss";
-
-.main {
-  .wrapper {
-    background: #fff;
-    padding: 0.2rem;
-    .number {
-      font-weight: bold;
-      font-size: 18px;
-      margin: 0.6rem 0;
-      text-align: center;
+<style lang="scss" scoped>
+.container {
+  .banner {
+    height: 1.76rem;
+    background: #0564F7 url("../../assets/images/payConfirm-banner.png") no-repeat calc(100% - 0.15rem) 0.20rem;
+    padding: 0.20rem 0.15rem;
+    .banner-pay {
+      font-size: 0.14rem;
+      font-family: PingFang SC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #FFFFFF;
+      opacity: 0.5;
     }
-    .money {
-      margin: 0.6rem 0;
-      height: 5vh;
-      display: flex;
-      justify-content: center;
-      div:nth-child(1) {
-        font-size: 0.18rem;
-        line-height: 4vh;
-        font-weight: bold;
-
-      }
-      div:nth-child(2) {
-        font-size: 0.3rem;
-        line-height: 5vh;
-        font-weight: bold;
-
-      }
-    }
-    .info div,.info span{
-      font-size: 0.15rem !important;
+    .banner-name {
+      margin-top: 0.03rem;
+      font-size: 16px;
+      font-family: PingFang SC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #FFFFFF;
     }
   }
-  padding: 0.15rem;
+  .cell-group {
+    transform: translateY(-0.90rem);
+    margin: 0 0.15rem;
+    padding: 0.25rem 0.20rem;
+    background: #FFFFFF;
+    border-radius: 0.08rem;
+    .cell-item {
+      padding: 0.07rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .cell-item-p1 {
+        font-size: 0.16rem;
+        font-family: PingFang SC-Bold, PingFang SC;
+        font-weight: bold;
+        color: #333333;
+      }
+      .cell-item-p2 {
+        font-size: 0.14rem;
+        font-family: PingFang SC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #666666;
+      }
+      .cell-item-p3 {
+        font-size: 0.14rem;
+        font-family: PingFang SC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #0564F7;
+      }
+    }
+    .cell-item1 {
+      padding: 0;
+    }
+  }
+}
+.btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   .money {
+    font-size: 0.16rem;
+    font-family: PingFang SC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #333333;
     span {
+      font-size: 0.16rem;
+      font-family: PingFang SC-Bold, PingFang SC;
       font-weight: bold;
-      font-size: 0.18rem;
+      color: #0564F7;
     }
-    span:nth-child(1) {
-    }
-    span:nth-child(2) {
-    }
+  }
+  .van-button {
+    width: 1.18rem;
   }
 }
 </style>

@@ -1,22 +1,22 @@
 <template>
-  <div class="main">
-    <div class="detail">
-      <van-cell-group>
-        <van-cell title="订单号" value="0000000000001111"></van-cell>
-        <van-cell title="订单名称" value="XXXXXXX"></van-cell>
-        <van-cell title="应付金额" value="500元"></van-cell>
+  <div class="container">
+    <div class="group-item">
+      <van-cell-group inset>
+        <van-cell title="订单号" value="0000000000001111" size="large"></van-cell>
+        <van-cell title="订单名称" value="XXXXXXX" size="large"></van-cell>
+        <van-cell title="应付金额" value="500元" size="large"></van-cell>
       </van-cell-group>
     </div>
-    <div class="method">
-      <van-cell title="还需支付" value="120元"></van-cell>
-      <van-radio-group v-model="method" checked-color="#0564F7">
+    <div class="group-item">
+      <van-radio-group v-model="checked" checked-color="#0564F7">
         <van-cell-group inset>
-          <van-cell title="医保支付" clickable @click="method = '1'">
+          <van-cell title="还需支付" value="200" size="large"></van-cell>
+          <van-cell title="医保支付" clickable @click="checked = '1'" size="large">
             <template #right-icon>
               <van-radio name="1" />
             </template>
           </van-cell>
-          <van-cell title="自费" clickable @click="method = '2'">
+          <van-cell title="自费" clickable @click="checked = '2'" size="large">
             <template #right-icon>
               <van-radio name="2" />
             </template>
@@ -24,14 +24,18 @@
         </van-cell-group>
       </van-radio-group>
     </div>
-    <BottomButton :url="getUrl"></BottomButton>
+  </div>
+  <div class="btn">
+    <van-button color="#0564F7" block @click="onClick">确定</van-button>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import BottomButton from '@/views/pays/components/BottomButton.vue'
-const method = ref('1')
+import { ref } from 'vue'
+import {useRouter} from "vue-router";
+
+const router = useRouter()
+const checked = ref('1')
 const list = ref([
   {
     title: '医保支付',
@@ -40,23 +44,20 @@ const list = ref([
     title: '自费',
   },
 ])
-const getUrl = computed(() => {
-  // return method.value=='1'
-})
+const onClick = () => {
+  if (checked.value == '1') {
+    router.push('orderconfirm')
+  } else {
+    router.push('payConfirm')
+  }
+  console.log(checked.value)
+}
 </script>
 <style scoped lang="scss">
-@import 'src/assets/styles/pay.scss';
-.main {
-  padding: 0.2rem 0 0;
-  .detail {
-    margin: 0 0.2rem 0.2rem;
-    background-color: #fff;
-    border-radius: 0.1rem;
-  }
-  .method {
-    margin: 0.2rem;
-    background-color: #fff;
-    border-radius: 0.1rem;
+.container {
+  padding: 0.2rem 0;
+  .group-item {
+    margin-bottom: 0.15rem;
   }
 }
 </style>

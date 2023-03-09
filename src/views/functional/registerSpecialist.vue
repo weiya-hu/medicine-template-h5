@@ -404,17 +404,4 @@ onMounted(() => {
     }
   }
 }
-.btn {
-  width: 100%;
-  height: 0.50rem;
-  padding: 0.05rem 0.15rem;
-  background: #FFFFFF;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  box-shadow: 0px -0.03rem 0.06rem 0.01rem rgba(0,0,0,0.08);
-  .van-button {
-    height: 100%;
-  }
-}
 </style>

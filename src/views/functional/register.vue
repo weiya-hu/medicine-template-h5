@@ -82,7 +82,7 @@ const onClick = (index: number) => {
 }
 const itemsClick = (id: any) => {
   router.push({
-    path: 'registrdept',
+    path: 'registerdept',
     query: {id: id}
   })
 }

@@ -185,23 +185,6 @@ const submit = () => {
     margin-top: 0.20rem;
   }
 }
-.btn {
-  width: 100%;
-  height: 0.50rem;
-  padding: 0.05rem 0.15rem;
-  background: #FFFFFF;
-  box-shadow: 0px -0.03rem 0.06rem 0.01rem rgba(0,0,0,0.08);
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  .van-button {
-    height: 100%;
-  }
-  //.van-button--primary {
-  //  background: #0564F7;
-  //  border: 0.01rem solid #0564F7;
-  //}
-}
 //:deep(.van-dialog__confirm), :deep(.van-dialog__confirm):active {
 //  color: #0564F7;
 //}

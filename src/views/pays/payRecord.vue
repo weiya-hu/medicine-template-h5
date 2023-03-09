@@ -7,9 +7,9 @@
       :offset-top="0"
       title-inactive-color="#333"
     >
-      <van-tab title="代缴费">
+      <van-tab title="待缴费">
         <div class="record-list">
-          <div class="list-container" v-for="i in 3">
+          <div class="list-container" v-for="i in 3" @click="onClick">
             <div class="list-item">
               <div class="left">
                 <div style="padding: 0.1rem">
@@ -51,15 +51,26 @@
       <van-tab title="已缴费"></van-tab>
     </van-tabs>
   </div>
+  <div class="btn" v-show="active === 0">
+    <van-button color="#0564F7" block @click="payClick">立即缴费</van-button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const active = ref<String | Number>(0)
 const checked = ref<Boolean>(true)
-const checkChange = (e) => {
+const checkChange = (e: Boolean) => {
   console.log(e)
+}
+const onClick = () => {
+  router.push('paydetails')
+}
+const payClick = () => {
+  router.push('payChoose')
 }
 </script>
 

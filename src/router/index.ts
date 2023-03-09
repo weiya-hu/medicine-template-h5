@@ -94,9 +94,9 @@ export const routes: RouteRecordRaw[] = [
             meta: { title: '挂号' },
           },
           {
-            path: '/registrdept',
-            name: 'RegistrDept',
-            component: () => import('@/views/functional/registrDept.vue'),
+            path: '/registerdept',
+            name: 'RegisterDept',
+            component: () => import('@/views/functional/registerDept.vue'),
             meta: { title: '挂号' },
           },
           {
@@ -172,6 +172,12 @@ export const routes: RouteRecordRaw[] = [
             meta: { title: '订单支付' },
           },
           {
+            path:'/orderconfirm',
+            component:()=>import('@/views/pays/orderConfirm.vue'),
+            name:"OrderConfirm",
+            meta: { title: '混合支付' },
+          },
+          {
             path:'/payConfirm',
             component:()=>import('@/views/pays/payConfirm.vue'),
             name:"payConfirm",
@@ -183,6 +189,13 @@ export const routes: RouteRecordRaw[] = [
             name:"payRecord",
             meta: { title: '门诊缴费' },
           },
+          {
+            path:'/paydetails',
+            component:() => import('@/views/pays/payDetails.vue'),
+            name:"payDetails",
+            meta: { title: '账单详情' },
+          },
+        //    payDetails
         ]
       }
 
