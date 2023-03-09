@@ -148,7 +148,7 @@ export const routes: RouteRecordRaw[] = [
             path: '/visitlog',
             name: 'Visitlog',
             component: () => import('@/views/layout/visitLog/visitLog.vue'),
-            meta: { title: '门诊就诊记录' },
+            meta: { title: '就诊记录' },
           },
           {
             path: '/visitlog/list',
