@@ -164,6 +164,24 @@ export const routes: RouteRecordRaw[] = [
           },
         ]
       },
+      {
+        path:'/pay',
+        component:()=>import('@/views/pays/payRecord.vue'),
+        name:"payRecord",
+      },
+      {
+        path:'/payChoose',
+        component:()=>import('@/views/pays/payChoose.vue'),
+        name:"payChoose",
+      },
+      {
+        path:'/payConfirm',
+        component:()=>import('@/views/pays/payConfirm.vue'),
+        name:"payConfirm",
+      }
+
+
+
     ],
   },
 
@@ -177,11 +195,8 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('@/views/noaccess/index.vue'),
     name: 'noaccess',
   },
-  {
-    path:'/pay/payRecord',
-    component:()=>import('@/views/pays/payRecord.vue'),
-    name:"Pay",
-  }
+
+
 
 ]
 
