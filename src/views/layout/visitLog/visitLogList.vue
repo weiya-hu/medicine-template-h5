@@ -13,7 +13,7 @@
     </div>
     <div class="line"></div>
     <div class="content-title">就诊记录</div>
-    <div v-for="(v, i) in list" :key="i" class="log-item">
+    <div v-for="(v, i) in list" :key="i" class="log-item" @click="$router.push('/visitlog/detail')">
       <div class="flexb log-item-child">
         <span>就诊科室</span>
         <span>{{ v.keshi }}</span>

@@ -23,9 +23,7 @@ onBeforeRouteUpdate((to) => {
 </script>
 <style lang="scss" scoped>
 .layout-page {
-  // max-width: 750px;
-  // width: 3.75rem;
-  height: 100vh;
+  min-height: 100vh;
   background: #f6f6f6;
 }
 .main-tab {
