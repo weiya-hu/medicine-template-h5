@@ -53,14 +53,20 @@
 
 *,
 body,
-div,
+div {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: $black3;
+  font-size: 0.14rem;
+}
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-weight: normal;
-  color: $black3;
   font-size: 0.14rem;
 }
 

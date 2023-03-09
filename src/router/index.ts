@@ -56,12 +56,6 @@ export const routes: RouteRecordRaw[] = [
         component: () => import('@/views/infoUrl/expertTeam.vue'),
         meta: { title: '专家团队' },
       },
-      // {
-      //   path: '/medicalguide',
-      //   name: 'MedicalGuide',
-      //   component: () => import('@/views/infoUrl/medicineGuide.vue'),
-      //   meta: { title: '就医指南' },
-      // },
       {
         path: '/medicalInsurance',
         name: 'MedicalInsurance',
@@ -165,20 +159,31 @@ export const routes: RouteRecordRaw[] = [
         ]
       },
       {
-        path:'/pay',
-        component:()=>import('@/views/pays/payRecord.vue'),
+        path: '/pay',
         name:"payRecord",
-      },
-      {
-        path:'/payChoose',
-        component:()=>import('@/views/pays/payChoose.vue'),
-        name:"payChoose",
-      },
-      {
-        path:'/payConfirm',
-        component:()=>import('@/views/pays/payConfirm.vue'),
-        name:"payConfirm",
-      }
+        component: () => import('@/views/layout/rview.vue'),
+        meta: { title: '门诊缴费' },
+        redirect : '/pay',
+        children: [
+          {
+            path:'/pay',
+            component:()=>import('@/views/pays/payRecord.vue'),
+            name:"payRecord",
+            meta: { title: '门诊缴费' },
+          },
+          {
+            path:'/payChoose',
+            component:()=>import('@/views/pays/payChoose.vue'),
+            name:"payChoose",
+            meta: { title: '门诊缴费' },
+          },
+          {
+            path:'/payConfirm',
+            component:()=>import('@/views/pays/payConfirm.vue'),
+            name:"payConfirm",
+            meta: { title: '门诊缴费' },
+          }
+        ]}
 
 
 

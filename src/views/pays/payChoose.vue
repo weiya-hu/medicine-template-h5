@@ -1,11 +1,5 @@
 <template>
   <div class="main">
-    <van-nav-bar
-      title="订单支付"
-      left-arrow
-      @click-left="$router.back()"
-      safe-area-inset-top
-    ></van-nav-bar>
     <div class="detail">
       <van-cell-group>
         <van-cell title="订单号" value="0000000000001111"></van-cell>
@@ -35,9 +29,8 @@
 </template>
 
 <script setup>
-
-import { ref,computed } from 'vue'
-import BottomButton from  "@/views/pays/components/BottomButton.vue"
+import { ref, computed } from 'vue'
+import BottomButton from '@/views/pays/components/BottomButton.vue'
 const method = ref('1')
 const list = ref([
   {
@@ -47,24 +40,21 @@ const list = ref([
     title: '自费',
   },
 ])
-const getUrl=computed(()=>{
+const getUrl = computed(() => {
   // return method.value=='1'
 })
 </script>
-
-
-
 <style scoped lang="scss">
-
 @import 'src/assets/styles/pay.scss';
-.main{
-  .detail{
-    margin: 0.2rem;
+.main {
+  padding: 0.2rem 0 0;
+  .detail {
+    margin: 0 0.2rem 0.2rem;
     background-color: #fff;
     border-radius: 0.1rem;
   }
-  .method{
-    margin:0.2rem;
+  .method {
+    margin: 0.2rem;
     background-color: #fff;
     border-radius: 0.1rem;
   }

@@ -1,11 +1,10 @@
 <template>
   <div class="main">
-    <van-nav-bar title="标题" left-arrow @click-left="$router.back()" safe-area-inset-top />
     <van-tabs
       v-model:active="active"
       title-active-color="#0564F7"
       sticky
-      :offset-top="50"
+      :offset-top="0"
       title-inactive-color="#333"
     >
       <van-tab title="代缴费">
@@ -73,7 +72,7 @@ const checkChange = (e) => {
 
 <style scoped lang="scss">
 @import 'src/assets/styles/pay.scss';
-:deep(.van-cell__value){
+:deep(.van-cell__value) {
   text-align: left;
 }
 .record-list {

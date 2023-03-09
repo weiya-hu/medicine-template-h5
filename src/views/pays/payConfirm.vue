@@ -1,5 +1,4 @@
 <template>
-  <van-nav-bar title="确认支付" left-arrow @click-left="$router.back()" safe-area-inset-top ></van-nav-bar>
   <div class="main">
     <div class="wrapper">
       <div class="number">XXXXXXXXXXXXXXX支付订单</div>
@@ -69,4 +68,3 @@
   }
 }
 </style>
-
