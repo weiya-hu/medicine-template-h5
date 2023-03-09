@@ -162,28 +162,29 @@ export const routes: RouteRecordRaw[] = [
         path: '/pay',
         name:"payRecord",
         component: () => import('@/views/layout/rview.vue'),
-        meta: { title: '门诊缴费' },
-        redirect : '/pay',
+        meta: { title: '订单支付' },
+        redirect : '/payChoose',
         children: [
-          {
-            path:'/pay',
-            component:()=>import('@/views/pays/payRecord.vue'),
-            name:"payRecord",
-            meta: { title: '门诊缴费' },
-          },
           {
             path:'/payChoose',
             component:()=>import('@/views/pays/payChoose.vue'),
             name:"payChoose",
-            meta: { title: '门诊缴费' },
+            meta: { title: '订单支付' },
           },
           {
             path:'/payConfirm',
             component:()=>import('@/views/pays/payConfirm.vue'),
             name:"payConfirm",
+            meta: { title: '确认支付' },
+          },
+          {
+            path:'/payRecord',
+            component:()=>import('@/views/pays/payRecord.vue'),
+            name:"payRecord",
             meta: { title: '门诊缴费' },
-          }
-        ]}
+          },
+        ]
+      }
 
 
 
