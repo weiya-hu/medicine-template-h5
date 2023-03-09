@@ -121,7 +121,7 @@
 
 <script lang="ts" setup>
 import {ref} from "vue";
-import {showDialog, showSuccessToast} from "vant";
+import {showDialog} from "vant";
 import {useRouter} from "vue-router";
 
 const router = useRouter()
@@ -144,7 +144,14 @@ const reset = () => {
 }
 const submit = () => {
   if (checked.value) {
-    showSuccessToast('预约成功');
+    showDialog({
+      title: '预约成功！',
+      message: '注意：到院后需至门诊大厅签到拿号再进行现场支付',
+      confirmButtonText: '确定',
+      confirmButtonColor: '#0564F7'
+    }).then(() => {
+      router.push('/')
+    });
   } else {
     showDialog({
       title: '提示',

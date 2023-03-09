@@ -15,12 +15,12 @@
           </template>
         </van-cell>
         <div class="time-bon">
-          <div class="time-bon-item" v-for="(item, index) in dateList" :key="index" @click="dateClick(index, item)">
+          <div class="time-bon-item" v-for="(item, index) in dateList" :key="index">
             <div class="week">{{ item.week }}</div>
-            <div :class="['date-back', activeDate == index ? 'active-back' : '', item.status == '无' ? 'active-disabled' : '']">
+            <van-button :class="['date-back', activeDate == index ? 'active-back' : '']" :color="activeDate == index ? '#0564F7' : ''" :disabled="item.status == '无'" @click="dateClick(index, item)">
               <div class="date">{{ item.date }}</div>
               <div class="status" >{{ item.status }}</div>
-            </div>
+            </van-button>
           </div>
         </div>
       </div>
@@ -223,7 +223,7 @@ const getTime = () => {
       status: '有号'
     },
     {
-      week: weekArray[new Date().getDay() + 3],
+      week: weekArray[new Date().getDay() - 4],
       date: new Date().getMonth() + 1 + '/' + (new Date().getDate() + 3),
       status: '无'
     },
@@ -280,6 +280,11 @@ onMounted(() => {
       transform: translateY(-0.3rem);
     }
 
+    .time .van-cell {
+      padding: 0;
+      margin-bottom: 0.05rem;
+    }
+
     .time .time-bon {
       display: flex;
       justify-content: space-between;
@@ -295,8 +300,11 @@ onMounted(() => {
         }
         .date-back {
           width: 0.44rem;
+          height: 0.60rem;
           margin-top: 0.03rem;
           padding: 0.05rem 0;
+          border: 0;
+          border-radius: 0.13rem;
           .date {
             margin-bottom: 0.10rem;
             font-size: 0.12rem;
@@ -314,17 +322,9 @@ onMounted(() => {
         }
         .active-back {
           background: #0564F7;
-          border-radius: 0.13rem;
           border: 0.01rem solid #0564F7;
           .date, .status {
             color: #FFFFFF;
-          }
-        }
-        .active-disabled {
-          background: 0;
-          border: 0;
-          .date, .status {
-            color: #CCCCCC;
           }
         }
       }
