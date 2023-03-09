@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <van-nav-bar title="标题" left-arrow @click-left="onClickLeft" safe-area-inset-top />
+    <van-nav-bar title="标题" left-arrow @click-left="$router.back()" safe-area-inset-top />
     <van-tabs
       v-model:active="active"
       title-active-color="#0564F7"
@@ -10,37 +10,40 @@
     >
       <van-tab title="代缴费">
         <div class="record-list">
-          <div class="list-container">
+          <div class="list-container" v-for="i in 3">
             <div class="list-item">
               <div class="left">
-                <div style="padding: 0.2rem">
+                <div style="padding: 0.1rem">
                   <div class="cell">
-                    <sapn style="margin-right: 0.15rem">项目名称</sapn>
-                    <sapn>X胸透影像学检查</sapn>
+                    <span style="margin-right: 0.15rem">项目名称</span>
+                    <span>X胸透影像学检查</span>
                   </div>
                   <div class="cell">
-                    <sapn style="margin-right: 0.15rem">患者姓名</sapn>
-                    <sapn>李淑娟</sapn>
+                    <span style="margin-right: 0.15rem">患者姓名</span>
+                    <span>李淑娟</span>
                   </div>
                   <div class="cell">
-                    <sapn style="margin-right: 0.15rem">检查地点</sapn>
-                    <sapn>3楼 102室</sapn>
+                    <span style="margin-right: 0.15rem">检查地点</span>
+                    <span>3楼 102室</span>
                   </div>
                   <div class="cell">
-                    <sapn style="margin-right: 0.15rem">主治医师</sapn>
-                    <sapn>连战</sapn>
+                    <span style="margin-right: 0.15rem">主治医师</span>
+                    <span>连战</span>
                   </div>
-
                 </div>
-
               </div>
               <div class="right">
-                <van-icon name="arrow" color="#707070" size="10px" />
+                <van-icon name="arrow" color="#707070" :size="3" />
               </div>
             </div>
             <van-divider></van-divider>
             <div class="check">
-              <van-checkbox shape="square"></van-checkbox>
+              <van-checkbox
+                shape="square"
+                v-model="checked"
+                checked-color="#0564F7"
+                @change="checkChange"
+              ></van-checkbox>
               <span>29元</span>
             </div>
           </div>
@@ -55,52 +58,58 @@
 import { ref } from 'vue'
 
 const active = ref<String | Number>(0)
+const checked = ref<Boolean>(true)
+const checkChange = (e) => {
+  console.log(e)
+}
 </script>
 
 <style lang="scss">
 :root {
-  --van-nav-bar-icon-color: #333;
-  --van-nav-bar-title-text-color: #333;
-  --van-nav-bar-background-color: #f6f6f6;
+  --van-divider-margin: 0.1rem;
   color: #333;
 }
 </style>
 
 <style scoped lang="scss">
 @import 'src/assets/styles/pay.scss';
+:deep(.van-cell__value){
+  text-align: left;
+}
 .record-list {
-  padding: 0.2rem 0.2rem;
-  .list-container{
+  padding: 0.1rem 0.1rem;
+  .list-container {
     background: #fff;
     border-radius: 0.1rem;
+    margin: 0.1rem;
     .list-item {
-      //padding: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.14rem;
       .left {
         width: 80vw;
-        .cell{
+        .cell {
           margin: 0.1rem 0;
+          span:nth-child(1) {
+            color: #666;
+          }
         }
       }
       .right {
         margin-right: 5vw;
       }
     }
-    .check{
+    .check {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.2rem 0.2rem;
-      span{
+      padding: 0.1rem 0.1rem;
+      span {
         font-weight: bold;
         font-size: 0.14rem;
       }
     }
   }
-
-
 }
 </style>

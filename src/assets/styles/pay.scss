@@ -1,12 +1,23 @@
 :deep(.van-nav-bar){
-  background-color: #f6f6f6;
+  background-color: #ededed;
 }
-:deep(.van-cell__value){
-  text-align: left;
+:deep(.van-nav-bar .van-icon){
+  color:#333333
 }
 
+:deep(.van-cell-group--inset){
+  margin: 0;
+}
 
 .main{
   background-color: #F6F6F6 ;
   height: 100vh;
 }
+
+:root{
+  //--van-nav-bar-icon-color: #333;
+  //--van-nav-bar-title-text-color: #333;
+  //--van-cell-group-inset-padding:0;
+  //--van-divider-margin:50;
+}
+
