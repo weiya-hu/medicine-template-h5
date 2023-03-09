@@ -4,7 +4,7 @@
     <div class="banner">
       <van-swipe class="my-swipe" :autoplay="3000" :show-indicators="false">
         <van-swipe-item v-for="(item, index) in bannerList" :key="index">
-          <img :src="item.imageUrl" alt="" />
+          <img :src="item.imageUrl" alt=""/>
           <div class="banner-title">
             <p class="banner-title-p1">{{ item.title }}</p>
             <p class="banner-title-p2">{{ item.text }}</p>
@@ -15,11 +15,12 @@
     <div class="container-box">
       <!-- 功能模块 -->
       <div class="card module1 van-row">
-        <div class="van-col--12 module1-item" @click="functionalClick(item.navUrl)" v-for="(item, index) in functionalList" :key="index">
-          <img :src="item.imageUrl" alt="" />
+        <div class="van-col--12 module1-item" @click="functionalClick(item.navUrl)"
+             v-for="(item, index) in functionalList" :key="index">
+          <img :src="item.imageUrl" alt=""/>
           <div class="module1-item-text">
-            <p class="module1-item-text-p1">{{item.text1}}</p>
-            <p class="module1-item-text-p2">{{item.text2}}</p>
+            <p class="module1-item-text-p1">{{ item.text1 }}</p>
+            <p class="module1-item-text-p2">{{ item.text2 }}</p>
           </div>
         </div>
       </div>
@@ -29,12 +30,12 @@
         <van-swipe indicator-color="#0564F7">
           <van-swipe-item v-for="(item, index) in visitUrlList" :key="index" class="van-row">
             <div
-              v-for="(items, indexs) in item.navBar"
-              :key="indexs"
-              class="module2-swiper-item van-col--6"
-              @click="visitClick(items.navUrl, items.code)"
+                v-for="(items, indexs) in item.navBar"
+                :key="indexs"
+                class="module2-swiper-item van-col--6"
+                @click="visitClick(items.navUrl, items.code)"
             >
-              <img :src="items.imageUrl" alt="" />
+              <img :src="items.imageUrl" alt=""/>
               <p>{{ items.text }}</p>
             </div>
           </van-swipe-item>
@@ -45,12 +46,12 @@
         <div class="module-title">信息服务</div>
         <div class="van-row">
           <div
-            class="van-col--6 module3-item"
-            v-for="(item, index) in infoUrlList"
-            :key="index"
-            @click="infoClick(item.navUrl, item.code)"
+              class="van-col--6 module3-item"
+              v-for="(item, index) in infoUrlList"
+              :key="index"
+              @click="infoClick(item.navUrl, item.code)"
           >
-            <img :src="item.imageUrl" alt="" />
+            <img :src="item.imageUrl" alt=""/>
             <p>{{ item.text }}</p>
           </div>
         </div>
@@ -60,22 +61,22 @@
         <div class="module-title">特色服务</div>
         <van-row gutter="10">
           <van-col span="12" class="module4-item" @click="featuredClick">
-            <img src="../../assets/images/home_module4_item1.png" alt="" />
+            <img src="../../assets/images/home_module4_item1.png" alt=""/>
             <p class="module4-item-p1 color1">住院病案复印邮寄</p>
             <p class="module4-item-p2 color3">住院病案线上申请</p>
           </van-col>
           <van-col span="12" class="module4-item" @click="featuredClick">
-            <img src="../../assets/images/home_module4_item2.png" alt="" />
+            <img src="../../assets/images/home_module4_item2.png" alt=""/>
             <p class="module4-item-p1 color2">住院病案复印邮寄</p>
             <p class="module4-item-p2 color4">住院病案线上申请</p>
           </van-col>
           <van-col span="12" class="module4-item" @click="featuredClick">
-            <img src="../../assets/images/home_module4_item2.png" alt="" />
+            <img src="../../assets/images/home_module4_item2.png" alt=""/>
             <p class="module4-item-p1 color2">住院病案复印邮寄</p>
             <p class="module4-item-p2 color4">住院病案线上申请</p>
           </van-col>
           <van-col span="12" class="module4-item" @click="featuredClick">
-            <img src="../../assets/images/home_module4_item1.png" alt="" />
+            <img src="../../assets/images/home_module4_item1.png" alt=""/>
             <p class="module4-item-p1 color1">住院病案复印邮寄</p>
             <p class="module4-item-p2 color3">住院病案线上申请</p>
           </van-col>
@@ -93,7 +94,7 @@
             <p class="module5-item-p2">公司与华为长期深度跨界合作关系及合作模式均没有发生变化</p>
           </div>
           <div class="van-col--6">
-            <img src="../../assets/images/home_banner.png" alt="" class="module5-item-img" />
+            <img src="../../assets/images/home_banner.png" alt="" class="module5-item-img"/>
           </div>
         </div>
         <div class="divider"></div>
@@ -103,7 +104,7 @@
             <p class="module5-item-p2">公司与华为长期深度跨界合作关系及合作模式均没有发生变化</p>
           </div>
           <div class="van-col--6">
-            <img src="../../assets/images/home_banner.png" alt="" class="module5-item-img" />
+            <img src="../../assets/images/home_banner.png" alt="" class="module5-item-img"/>
           </div>
         </div>
       </div>
@@ -112,12 +113,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { categoryTree_api } from '@/api/infoUrl'
-import { showToast } from 'vant'
-import { wechatAuthJump_api } from '@/api/index'
-import { setToken } from '@/utils/cache'
+import {onMounted, ref} from 'vue'
+import {useRouter} from 'vue-router'
+import {categoryTree_api} from '@/api/infoUrl'
+import {showToast} from 'vant'
+import {wechatAuthJump_api} from '@/api/index'
+import {setToken} from '@/utils/cache'
 
 const router = useRouter()
 // 背景
@@ -194,7 +195,7 @@ const visitUrlList = ref([
         text: '预约记录',
       },
       {
-        // navUrl: 'report',
+        navUrl: 'report/list',
         code: '',
         imageUrl: new URL('../../assets/images/home_module2_item5.png', import.meta.url).href,
         text: '检查报告',
@@ -318,7 +319,7 @@ const visitClick = (data: any, code: any) => {
 const infoClick = (url: any, code: any) => {
   router.push({
     path: url,
-    query: { code: code },
+    query: {code: code},
   })
 }
 // 特色服务
@@ -331,7 +332,7 @@ const getToken = () => {
   const code = router.currentRoute.value.query.code
   if (!code) return
 
-  const data = { auth_code: router.currentRoute.value.query.code }
+  const data = {auth_code: router.currentRoute.value.query.code}
   wechatAuthJump_api(data).then((res: IObj) => {
     setToken(res.data.authorizerAccessToken)
   })
